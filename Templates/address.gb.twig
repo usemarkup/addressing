@@ -1,0 +1,14 @@
+{% block spec %}
+{% address %}
+{% if not omit_recipient and address.recipient|length > 0 %}{% recipient %}{{ address.recipient }}{% endrecipient %}{% break %}{% endif %}
+{% streetlines %}
+{% for streetline in address.streetaddresslines %}
+{% streetline %}{{ streetline }}{% endstreetline %}{% break %}
+{% endfor %}
+{% endstreetlines %}
+{% locality %}{{ address.locality }}{% endlocality %}{% break %}
+{% if address.region|length > 0 %}{% region %}{{ address.region }}{% endregion %}{% break %}{% endif %}
+{% postalcode %}{{ address.postalcode }}{% endpostalcode %}{% if not omit_country %}{% break %}
+{% country %}{{ country_name(address.country) }}{% endcountry %}{% endif %}
+{% endaddress %}
+{% endblock spec %}

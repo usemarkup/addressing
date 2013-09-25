@@ -1,0 +1,30 @@
+{
+    "name": "markup/addressing",
+    "description": "A library that can render international postal addresses in different formats.",
+    "keywords": ["addresses", "postal", "addressing", "formatting"],
+    "type": "library",
+    "licence": "MIT",
+    "authors": [
+        {
+            "name": "Douglas Greenshields",
+            "email": "douglas@usemarkup.com"
+        },
+        {
+            "name": "Markup",
+            "homepage": "http://www.usemarkup.com/"
+        }
+    ],
+    "require": {
+        "symfony/intl": "~2.3",
+        "twig/twig": ">=1.12"
+    },
+    "autoload": {
+        "psr-0": { "Markup\\Addressing": "" }
+    },
+    "target-dir": "Markup/Addressing",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
