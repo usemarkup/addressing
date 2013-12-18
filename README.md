@@ -1,5 +1,7 @@
 # MarkupAddressing
 
+[![Build Status](https://api.travis-ci.org/usemarkup/addressing.png?branch=master)](http://travis-ci.org/usemarkup/addressing)
+
 ## About
 
 This library provides formatting for international postal addresses.  It takes a common format of an address and renders it according to the rules set out in [Frank's Compulsive Guide To Postal Addresses](http://www.columbia.edu/~fdc/postal/).
