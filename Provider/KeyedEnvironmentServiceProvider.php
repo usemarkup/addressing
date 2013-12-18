@@ -20,8 +20,11 @@ class KeyedEnvironmentServiceProvider
     /**
      * @param callable $generator
      **/
-    public function __construct(callable $generator)
+    public function __construct($generator)
     {
+        if (!is_callable($generator)) {
+            throw new \InvalidArgumentException('Generator must be a callable.');
+        }
         $this->generator = $generator;
         $this->environments = array();
     }
