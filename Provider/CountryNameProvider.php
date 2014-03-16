@@ -14,7 +14,7 @@ class CountryNameProvider implements CountryNameProviderInterface
      *
      * @var array
      **/
-    private $displayCountries = null;
+    private $displayCountries;
 
     /**
      * The locale string being used.
@@ -29,15 +29,17 @@ class CountryNameProvider implements CountryNameProviderInterface
     public function __construct($locale)
     {
         $this->locale = $locale;
+        $this->displayCountries = [];
     }
 
     /**
      * {@inheritdoc}
      **/
-    public function getDisplayCountries()
+    public function getDisplayCountries($locale = null)
     {
-        if (!$this->hasLoadedCountries()) {
-            $this->loadCountries();
+        $localeToUse = $locale ?: $this->locale;
+        if (!$this->hasLoadedCountriesForLocale($localeToUse)) {
+            $this->loadCountriesForLocale($localeToUse);
         }
 
         return $this->displayCountries;
@@ -46,35 +48,39 @@ class CountryNameProvider implements CountryNameProviderInterface
     /**
      * {@inheritdoc}
      **/
-    public function getDisplayNameForCountry($country)
+    public function getDisplayNameForCountry($country, $locale = null)
     {
-        if (!$this->hasLoadedCountries()) {
-            $this->loadCountries();
+        $localeToUse = $locale ?: $this->locale;
+        if (!$this->hasLoadedCountriesForLocale($localeToUse)) {
+            $this->loadCountriesForLocale($localeToUse);
         }
-        if (!isset($this->displayCountries[$country])) {
+        if (!isset($this->displayCountries[$localeToUse][$country])) {
             return null;
         }
 
-        return $this->displayCountries[$country];
+        return $this->displayCountries[$localeToUse][$country];
     }
 
     /**
-     * Gets whether the countries have been loaded into this object.
+     * Gets whether the countries have been loaded into this object for a locale.
      *
+     * @param string $locale
      * @return bool
      **/
-    private function hasLoadedCountries()
+    private function hasLoadedCountriesForLocale($locale)
     {
-        return null !== $this->displayCountries;
+        return !empty($this->displayCountries[$locale]);
     }
 
     /**
      * Loads countries in.
+     *
+     * @param string $locale
      **/
-    private function loadCountries()
+    private function loadCountriesForLocale($locale)
     {
         //load from Symfony Intl component
         $regionBundle = Intl::getRegionBundle();
-        $this->displayCountries = $regionBundle->getCountryNames($this->locale);
+        $this->displayCountries[$locale] = $regionBundle->getCountryNames($locale);
     }
 }

@@ -35,11 +35,12 @@ class CountryNameExtension extends \Twig_Extension
      * Gets the name for the provided country ISO3166 alpha-2 code.
      *
      * @param  string $country
+     * @param  string $locale
      * @return string
      **/
-    public function getNameForCountry($country)
+    public function getNameForCountry($country, $locale = null)
     {
-        return $this->provider->getDisplayNameForCountry($country);
+        return $this->provider->getDisplayNameForCountry($country, $locale);
     }
 
     public function getName()
