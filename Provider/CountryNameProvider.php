@@ -29,7 +29,7 @@ class CountryNameProvider implements CountryNameProviderInterface
     public function __construct($locale)
     {
         $this->locale = $locale;
-        $this->displayCountries = [];
+        $this->displayCountries = array();
     }
 
     /**
