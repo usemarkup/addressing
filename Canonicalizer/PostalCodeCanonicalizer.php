@@ -34,6 +34,19 @@ class PostalCodeCanonicalizer
                 return $seCanonicalizer->canonicalize($postalCode);
                 break;
 
+            case 'FI':
+                $fiveDigitCanonicalizer = new FixedConsecutiveDigitPostalCodeCanonicalizer(5);
+
+                return $fiveDigitCanonicalizer->canonicalize($postalCode);
+                break;
+
+            case 'NO':
+            case 'DK':
+                $fourDigitCanonicalizer = new FixedConsecutiveDigitPostalCodeCanonicalizer(4);
+
+                return $fourDigitCanonicalizer->canonicalize($postalCode);
+                break;
+
             default:
                 return $postalCode;
                 break;
