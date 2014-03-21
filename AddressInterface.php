@@ -22,12 +22,12 @@ interface AddressInterface
     public function hasRecipient();
 
     /**
-     * Gets the numbered address line, counting from one.  If there is no address line for provided number, return false.
+     * Gets the numbered address line, counting from one.  If there is no address line for provided number, return null.
      *
-     * @param  int         $line_number
-     * @return string|bool
+     * @param  int         $lineNumber
+     * @return string|null
      **/
-    public function getStreetAddressLine($line_number);
+    public function getStreetAddressLine($lineNumber);
 
     /**
      * Gets the address lines that are part of the street address - i.e. everything up until the postal town.
