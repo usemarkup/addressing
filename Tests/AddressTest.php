@@ -25,7 +25,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
             $region,
             $recipient
         );
-        $this->assertInstanceOf('Markup\Addressing\AddressInterface', $address);
+        $this->assertInstanceOf('Markup\Addressing\RenderableAddressInterface', $address);
         $this->assertEquals($country, $address->getCountry());
         $this->assertEquals($streetLines, $address->getStreetAddressLines());
         $this->assertEquals('Anydistrict', $address->getStreetAddressLine(2));

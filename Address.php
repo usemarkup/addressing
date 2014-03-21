@@ -5,7 +5,7 @@ namespace Markup\Addressing;
 /**
  * A simple address implementation.
  */
-class Address implements AddressInterface
+class Address implements RenderableAddressInterface
 {
     /**
      * @var string
@@ -141,5 +141,26 @@ class Address implements AddressInterface
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Gets any prerendered representation of the address lines (as an indexed array), minus the country, *if* this is persisted as a whole with the address.
+     * Otherwise, this method must return null.
+     *
+     * @return array|null
+     **/
+    public function getPrerenderedLines()
+    {
+        return null;
+    }
+
+    /**
+     * Gets whether this address has a prerendered representation, minus the country.
+     *
+     * @return bool
+     **/
+    public function hasPrerenderedLines()
+    {
+        return false;
     }
 }
