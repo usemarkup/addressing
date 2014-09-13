@@ -17,18 +17,18 @@ class CountryNameProvider implements CountryNameProviderInterface
     private $displayCountries;
 
     /**
-     * The locale string being used.
+     * The locale string provider..
      *
-     * @var string
+     * @var LocaleProviderInterface
      **/
-    private $locale;
+    private $localeProvider;
 
     /**
      * @param string $locale
      **/
-    public function __construct($locale)
+    public function __construct(LocaleProviderInterface $localeProvider)
     {
-        $this->locale = $locale;
+        $this->localeProvider = $localeProvider;
         $this->displayCountries = array();
     }
 
@@ -37,7 +37,7 @@ class CountryNameProvider implements CountryNameProviderInterface
      **/
     public function getDisplayCountries($locale = null)
     {
-        $localeToUse = $locale ?: $this->locale;
+        $localeToUse = $locale ?: $this->getLocale();
         if (!$this->hasLoadedCountriesForLocale($localeToUse)) {
             $this->loadCountriesForLocale($localeToUse);
         }
@@ -50,7 +50,7 @@ class CountryNameProvider implements CountryNameProviderInterface
      **/
     public function getDisplayNameForCountry($country, $locale = null)
     {
-        $localeToUse = $locale ?: $this->locale;
+        $localeToUse = $locale ?: $this->getLocale();
         if (!$this->hasLoadedCountriesForLocale($localeToUse)) {
             $this->loadCountriesForLocale($localeToUse);
         }
@@ -82,5 +82,13 @@ class CountryNameProvider implements CountryNameProviderInterface
         //load from Symfony Intl component
         $regionBundle = Intl::getRegionBundle();
         $this->displayCountries[$locale] = $regionBundle->getCountryNames($locale);
+    }
+
+    /**
+     * @var string
+     */
+    private function getLocale()
+    {
+        return $this->localeProvider->getLocale();
     }
 }
