@@ -43,7 +43,7 @@ class PostalCodeCanonicalizer
                 break;
 
             case 'PT':
-                $variant = new CombinedPostalCodeVariant([new PostalCodeVariant([4]), new PostalCodeVariant([4, 3], '-')]);
+                $variant = new CombinedPostalCodeVariant(array(new PostalCodeVariant(array(4)), new PostalCodeVariant(array(4, 3), '-')));
 
                 return $variant->format($postalCode);
                 break;

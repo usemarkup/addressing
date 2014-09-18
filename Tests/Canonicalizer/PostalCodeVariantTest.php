@@ -13,14 +13,14 @@ class PostalCodeVariantTest extends \PHPUnit_Framework_TestCase
 
     public function testSimpleVariant()
     {
-        $variant = new PostalCodeVariant([5]);
+        $variant = new PostalCodeVariant(array(5));
         $dirtyCode = '123-45';
         $this->assertEquals('12345', $variant->format($dirtyCode));
     }
 
     public function testComplexVariant()
     {
-        $variant = new PostalCodeVariant([5, 4], '-');
+        $variant = new PostalCodeVariant(array(5, 4), '-');
         $code = '123456789';
         $this->assertEquals('12345-6789', $variant->format($code));
     }

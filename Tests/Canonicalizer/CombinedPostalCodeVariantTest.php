@@ -14,7 +14,7 @@ class CombinedPostalCodeVariantTest extends \PHPUnit_Framework_TestCase
 
     public function testVariant()
     {
-        $variant = new CombinedPostalCodeVariant([new PostalCodeVariant([5]), new PostalCodeVariant([5, 4], '-')]);
+        $variant = new CombinedPostalCodeVariant(array(new PostalCodeVariant(array(5)), new PostalCodeVariant(array(5, 4), '-')));
         $code = '123456789';
         $this->assertEquals('12345-6789', $variant->format($code));
     }
