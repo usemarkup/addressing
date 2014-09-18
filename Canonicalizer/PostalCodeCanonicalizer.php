@@ -35,9 +35,17 @@ class PostalCodeCanonicalizer
                 break;
 
             case 'FI':
+            case 'IT':
+            case 'ES':
                 $fiveDigitCanonicalizer = new FixedConsecutiveDigitPostalCodeCanonicalizer(5);
 
                 return $fiveDigitCanonicalizer->canonicalize($postalCode);
+                break;
+
+            case 'PT':
+                $variant = new CombinedPostalCodeVariant([new PostalCodeVariant([4]), new PostalCodeVariant([4, 3], '-')]);
+
+                return $variant->format($postalCode);
                 break;
 
             case 'NO':
