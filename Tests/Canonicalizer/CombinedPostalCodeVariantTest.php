@@ -9,7 +9,7 @@ class CombinedPostalCodeVariantTest extends \PHPUnit_Framework_TestCase
 {
     public function testIsPostalCodeVariant()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\PostalCodeVariantInterface', new CombinedPostalCodeVariant([]));
+        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\PostalCodeVariantInterface', new CombinedPostalCodeVariant(array()));
     }
 
     public function testVariant()
