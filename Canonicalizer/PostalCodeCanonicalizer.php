@@ -48,6 +48,12 @@ class PostalCodeCanonicalizer
                 return $variant->format($postalCode);
                 break;
 
+            case 'NL':
+                $variant = new CombinedPostalCodeVariant(array(new PostalCodeVariant(array(4)), new PostalCodeVariant(array(4, 2), ' ')));
+
+                return $variant->format($postalCode);
+                break;
+
             case 'NO':
             case 'DK':
                 $fourDigitCanonicalizer = new FixedConsecutiveDigitPostalCodeCanonicalizer(4);
