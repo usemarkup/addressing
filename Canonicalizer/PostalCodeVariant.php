@@ -38,7 +38,7 @@ class PostalCodeVariant implements PostalCodeVariantInterface
             return $postalCode;
         }
         $position = 0;
-        $codeParts = [];
+        $codeParts = array();
         foreach ($this->parts as $part) {
             $codeParts[] = substr($strippedCode, $position, intval($part));
             $position += intval($part);
