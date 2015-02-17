@@ -9,7 +9,7 @@ This library provides formatting for international postal addresses.  It takes a
 ## Limitations
 
 At the current time, there are only definitions for: United Kingdom, Guernsey, Jersey, Isle of Man, Ireland, Sweden, Denmark,
-Norway, Finland.  There are fallbacks in place for other countries.  Formats for other locations will be added soon, and PRs
+Norway, Finland, USA, Canada.  There are fallbacks in place for other countries.  Formats for other locations will be added soon, and PRs
 are more than welcome!
 
 This library is not currently usable by itself (a facade class is coming that will allow direct usage), but there is a Symfony2 bundle (markup/addressing-bundle) that provides easy use of the library.
