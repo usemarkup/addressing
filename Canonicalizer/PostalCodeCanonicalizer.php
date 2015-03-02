@@ -61,6 +61,12 @@ class PostalCodeCanonicalizer
                 return $fourDigitCanonicalizer->canonicalize($postalCode);
                 break;
 
+            case 'CA':
+                $caCanonicalizer = new CanadaPostalCodeCanonicalizer();
+
+                return $caCanonicalizer->canonicalize($postalCode);
+                break;
+
             default:
                 return $postalCode;
                 break;

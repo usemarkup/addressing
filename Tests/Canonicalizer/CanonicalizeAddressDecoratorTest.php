@@ -17,17 +17,27 @@ class CanonicalizeAddressDecoratorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Markup\Addressing\AddressInterface', $this->decorator);
     }
 
-    public function testCanonicalizesPostalCode()
+    /**
+     * @dataProvider codesForCountries
+     */
+    public function testCanonicalizesPostalCode($original, $expected, $country)
     {
-        $postalCode = ' WD36TH';
         $this->address
             ->expects($this->any())
             ->method('getPostalCode')
-            ->will($this->returnValue($postalCode));
+            ->will($this->returnValue($original));
         $this->address
             ->expects($this->any())
             ->method('getCountry')
-            ->will($this->returnValue('GB'));
-        $this->assertEquals('WD3 6TH', $this->decorator->getPostalCode());
+            ->will($this->returnValue($country));
+        $this->assertEquals($expected, $this->decorator->getPostalCode());
+    }
+
+    public function codesForCountries()
+    {
+        return array(
+            array(' WD36TH', 'WD3 6TH', 'GB'),
+            array(' l4R3e6', 'L4R 3E6', 'CA'),
+        );
     }
 }
