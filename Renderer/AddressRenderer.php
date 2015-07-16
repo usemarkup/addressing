@@ -28,14 +28,14 @@ class AddressRenderer implements AddressRendererInterface
     private $templateProvider;
 
     /**
-     * @var string
+     * @var string|callable
      */
     private $locale;
 
     /**
      * @param KeyedEnvironmentServiceProvider      $twig             A Twig environment provider.
      * @param IntlAddressTemplateProviderInterface $templateProvider
-     * @param string                               $locale
+     * @param string|callable                      $locale
      **/
     public function __construct(KeyedEnvironmentServiceProvider $twigProvider, IntlAddressTemplateProviderInterface $templateProvider, $locale = null)
     {
@@ -61,10 +61,22 @@ class AddressRenderer implements AddressRendererInterface
             array(
                 'address' => $address,
                 'format' => $format,
-                'locale' => (isset($options['locale']) ? $options['locale'] : $this->locale),
+                'locale' => (isset($options['locale']) ? $options['locale'] : $this->getLocale()),
                 'omit_recipient' => (isset($options['omit_recipient'])) ? (bool) $options['omit_recipient'] : false,
                 'omit_country' => (isset($options['omit_country'])) ? (bool) $options['omit_country'] : false,
             )
         );
+    }
+
+    /**
+     * @return string
+     */
+    private function getLocale()
+    {
+        if (is_callable($this->locale)) {
+            return call_user_func($this->locale);
+        }
+
+        return $this->locale;
     }
 }
