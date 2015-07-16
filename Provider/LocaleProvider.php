@@ -2,7 +2,7 @@
 
 namespace Markup\Addressing\Provider;
 
-class LocaleProvider implements LocaleProviderInterface
+class LocaleProvider
 {
     /**
      * @var string
@@ -23,5 +23,13 @@ class LocaleProvider implements LocaleProviderInterface
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * @return string
+     */
+    public function __invoke()
+    {
+        return $this->getLocale();
     }
 }

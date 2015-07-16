@@ -17,17 +17,20 @@ class CountryNameProvider implements CountryNameProviderInterface
     private $displayCountries;
 
     /**
-     * The locale string provider..
+     * The locale string provider.
      *
-     * @var LocaleProviderInterface
+     * @var callable
      **/
     private $localeProvider;
 
     /**
-     * @param string $locale
+     * @param callable $locale
      **/
-    public function __construct(LocaleProviderInterface $localeProvider)
+    public function __construct($localeProvider)
     {
+        if (!is_callable($localeProvider)) {
+            throw new \InvalidArgumentException('localeProvider constructor param must be a callable');
+        }
         $this->localeProvider = $localeProvider;
         $this->displayCountries = array();
     }
@@ -89,6 +92,6 @@ class CountryNameProvider implements CountryNameProviderInterface
      */
     private function getLocale()
     {
-        return $this->localeProvider->getLocale();
+        return call_user_func($this->localeProvider);
     }
 }

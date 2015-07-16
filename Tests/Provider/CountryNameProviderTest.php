@@ -12,11 +12,9 @@ class CountryNameProviderTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->renderingLocale = 'en_GB';
-        $this->localeProvider = $this->getMock('Markup\Addressing\Provider\LocaleProviderInterface');
-        $this->localeProvider
-            ->expects($this->any())
-            ->method('getLocale')
-            ->will($this->returnValue($this->renderingLocale));
+        $this->localeProvider = function () {
+            return $this->renderingLocale;
+        };
         $this->provider = new CountryNameProvider($this->localeProvider);
     }
 
