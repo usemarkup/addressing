@@ -14,22 +14,27 @@ class StreetAddressParserTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider cases
      */
-    public function testParseLines($lines, $street, $streetNumber, $district)
+    public function testParseLines($lines, $street, $streetNumber, $district, $streetNumberWithoutAddition, $streetNumberAddition)
     {
         $parsed = $this->parser->parseLines($lines);
         $this->assertInstanceOf('Markup\Addressing\Parsing\ParsedStreetAddressInterface', $parsed);
         $this->assertEquals($street, $parsed->getStreet());
         $this->assertEquals($streetNumber, $parsed->getStreetNumber());
         $this->assertEquals($district, $parsed->getDistrict());
+        $this->assertEquals($streetNumberWithoutAddition, $parsed->getStreetNumberWithoutAddition());
+        $this->assertEquals($streetNumberAddition, $parsed->getStreetNumberAddition());
     }
 
     public function cases()
     {
         return array(
-            array(array(), null, null, null),
-            array(array('1600 Pennsylvania Avenue'), 'Pennsylvania Avenue', '1600', null),
-            array(array('Heleneborgsgatan 56', 'Skanstull'), 'Heleneborgsgatan', '56', 'Skanstull'),
-            array(array('1600', 'Pennsylvania Avenue'), 'Pennsylvania Avenue', '1600', null),
+            array(array(), null, null, null, null, null),
+            array(array('1600 Pennsylvania Avenue'), 'Pennsylvania Avenue', '1600', null, '1600', null),
+            array(array('Heleneborgsgatan 56', 'Skanstull'), 'Heleneborgsgatan', '56', 'Skanstull', '56', null),
+            array(array('1600', 'Pennsylvania Avenue'), 'Pennsylvania Avenue', '1600', null, '1600', null),
+            array(array('Haagstraat 23A'), 'Haagstraat', '23A', null, '23', 'A'),
+            array(array('Haagstraat 23 A-I'), 'Haagstraat', '23 A-I', null, '23', 'A-I'),
+            array(array('1000 1/2 5th Avenue'), '5th Avenue', '1000 1/2', null, '1000', '1/2'),
         );
     }
 }
