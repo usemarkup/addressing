@@ -16,7 +16,7 @@ class StreetAddressParser
 
         //cases where first line is street line
         $line = $lines[0];
-        if (preg_match('/^(\d+\s?[\w\-\/]{0,4})\s(.*)$/', $line, $matches)) {
+        if (preg_match('/^(\d+\s?[[:upper:]\d\-\/]{0,4})\s(.*)$/', $line, $matches)) {
             $houseNumberParts = $this->parseHouseNumberParts($matches[1]);
 
             return new ParsedStreetAddress(
