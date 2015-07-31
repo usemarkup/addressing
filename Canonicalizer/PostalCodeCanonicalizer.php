@@ -49,9 +49,8 @@ class PostalCodeCanonicalizer
                 break;
 
             case 'NL':
-                $variant = new CombinedPostalCodeVariant(array(new PostalCodeVariant(array(4)), new PostalCodeVariant(array(4, 2), ' ')));
-
-                return $variant->format($postalCode);
+                $nlCanonicalizer = new NetherlandsPostalCodeCanonicalizer();
+                return $nlCanonicalizer->canonicalize($postalCode);
                 break;
 
             case 'NO':
