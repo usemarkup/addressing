@@ -4,6 +4,10 @@ namespace Markup\Addressing\Parsing;
 
 class StreetAddressParser
 {
+    /**
+     * @param array $lines
+     * @return ParsedStreetAddressInterface
+     */
     public function parseLines(array $lines)
     {
         //strip out any empty lines
