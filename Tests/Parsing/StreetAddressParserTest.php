@@ -36,6 +36,7 @@ class StreetAddressParserTest extends \PHPUnit_Framework_TestCase
             array(array('Haagstraat 23 A-I'), 'Haagstraat', '23 A-I', null, '23', 'A-I'),
             array(array('1000 1/2 5th Avenue'), '5th Avenue', '1000 1/2', null, '1000', '1/2'),
             array(array('65 High Street'), 'High Street', '65', null, '65', null),
+            array(array('Shop', 'Haagstraat, 123'), 'Haagstraat', '123', null, '123', null),
         );
     }
 }

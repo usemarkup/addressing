@@ -18,54 +18,70 @@ class StreetAddressParser
             return new ParsedStreetAddress();
         }
 
-        //cases where first line is street line
-        $line = $lines[0];
-        if (preg_match('/^(\d+\s?[[:upper:]\d\-\/]{0,4})\s(.*)$/', $line, $matches)) {
-            $houseNumberParts = $this->parseHouseNumberParts($matches[1]);
+        $getDistrict = function (array $lines, $streetLineIndex) {
+            if (count($lines) - 1 === $streetLineIndex) {
+                return null;
+            }
 
-            return new ParsedStreetAddress(
-                $matches[2],
-                $matches[1],
-                $this->getDistrictForLinesGivenStreetLine($lines, 0),
-                $houseNumberParts['without_addition'],
-                $houseNumberParts['addition']
-            );
-        } elseif (preg_match('/^(.*)\s(\d+\s?[\w\-\/]*)$/', $line, $matches)) {
-            $houseNumberParts = $this->parseHouseNumberParts($matches[2]);
+            return array_pop($lines);//not a reference, so mutation is all good
+        };
 
-            return new ParsedStreetAddress(
-                $matches[1],
-                $matches[2],
-                $this->getDistrictForLinesGivenStreetLine($lines, 0),
-                $houseNumberParts['without_addition'],
-                $houseNumberParts['addition']
-            );
+        $trim = function ($string) {
+            return trim($string, ',');
+        };
+
+        $parseOutAddressWithNumberBefore = function ($line, $index) use ($lines, $trim, $getDistrict) {
+            if (preg_match('/^(\d+\s?[[:upper:]\d\-\/]{0,4})\s(.*)$/', $line, $matches)) {
+                $houseNumberParts = $this->parseHouseNumberParts($matches[1]);
+
+                return new ParsedStreetAddress(
+                    $trim($matches[2]),
+                    $trim($matches[1]),
+                    $getDistrict($lines, $index),
+                    $houseNumberParts['without_addition'],
+                    $houseNumberParts['addition']
+                );
+            }
+        };
+        $parseOutAddressWithNumberAfter = function ($line, $index) use ($lines, $trim, $getDistrict) {
+            if (preg_match('/^(.*)\s(\d+\s?[\w\-\/]*)$/', $line, $matches)) {
+                $houseNumberParts = $this->parseHouseNumberParts($matches[2]);
+
+                return new ParsedStreetAddress(
+                    $trim($matches[1]),
+                    $trim($matches[2]),
+                    $getDistrict($lines, $index),
+                    $houseNumberParts['without_addition'],
+                    $houseNumberParts['addition']
+                );
+            }
+        };
+        $parsers = array($parseOutAddressWithNumberBefore, $parseOutAddressWithNumberAfter);
+
+        foreach ($lines as $index => $line) {
+            foreach ($parsers as $parser) {
+                $parsed = $parser($line, $index);
+                if ($parsed) {
+                    return $parsed;
+                }
+            }
         }
 
         //case where street number is on one line, street name on next
-        if (count($lines) >= 2 && preg_match('/^(\d+\S*)$/', $line[0], $matches)) {
+        if (count($lines) >= 2 && preg_match('/^(\d+\S*)$/', $lines[0], $matches)) {
             $houseNumberParts = $this->parseHouseNumberParts($lines[0]);
 
             return new ParsedStreetAddress(
                 $lines[1],
                 $lines[0],
-                $this->getDistrictForLinesGivenStreetLine($lines, 1),
+                $getDistrict($lines, 1),
                 $houseNumberParts['without_addition'],
                 $houseNumberParts['addition']
             );
         }
 
         //fallback
-        return new ParsedStreetAddress($lines[0], null, $this->getDistrictForLinesGivenStreetLine($lines, 0));
-    }
-
-    private function getDistrictForLinesGivenStreetLine(array $lines, $streetLineIndex)
-    {
-        if (count($lines) - 1 === $streetLineIndex) {
-            return null;
-        }
-
-        return array_pop($lines);//not a reference, so mutation is all good
+        return new ParsedStreetAddress($lines[0], null, $getDistrict($lines, 0));
     }
 
     /**
