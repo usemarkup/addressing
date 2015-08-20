@@ -30,9 +30,11 @@ class StreetAddressParser
             return trim($string, ',');
         };
 
-        $parseOutAddressWithNumberBefore = function ($line, $index) use ($lines, $trim, $getDistrict) {
+        $that = $this;
+
+        $parseOutAddressWithNumberBefore = function ($line, $index) use ($lines, $trim, $getDistrict, $that) {
             if (preg_match('/^(\d+\s?[[:upper:]\d\-\/]{0,4})\s(.*)$/', $line, $matches)) {
-                $houseNumberParts = $this->parseHouseNumberParts($matches[1]);
+                $houseNumberParts = $that->parseHouseNumberParts($matches[1]);
 
                 return new ParsedStreetAddress(
                     $trim($matches[2]),
@@ -43,9 +45,9 @@ class StreetAddressParser
                 );
             }
         };
-        $parseOutAddressWithNumberAfter = function ($line, $index) use ($lines, $trim, $getDistrict) {
+        $parseOutAddressWithNumberAfter = function ($line, $index) use ($lines, $trim, $getDistrict, $that) {
             if (preg_match('/^(.*)\s(\d+\s?[\w\-\/]*)$/', $line, $matches)) {
-                $houseNumberParts = $this->parseHouseNumberParts($matches[2]);
+                $houseNumberParts = $that->parseHouseNumberParts($matches[2]);
 
                 return new ParsedStreetAddress(
                     $trim($matches[1]),
@@ -88,7 +90,7 @@ class StreetAddressParser
      * @param string $houseNumber
      * @return array with members 'original', 'without_addition' and 'addition' - use nulls rather than empty strings
      */
-    private function parseHouseNumberParts($houseNumber)
+    public function parseHouseNumberParts($houseNumber)
     {
         preg_match('/^(\d+)(.*)$/', $houseNumber, $matches);
 
