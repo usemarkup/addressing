@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "symfony/intl": "~2.3",
+        "symfony/intl": "~2.3|~3.0",
         "twig/twig": ">=1.12"
     },
     "require-dev": {
