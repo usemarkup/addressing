@@ -48,7 +48,7 @@ class AddressRenderer implements AddressRendererInterface
     /**
      * {@inheritdoc}
      **/
-    public function render(RenderableAddressInterface $address, array $options = array())
+    public function render(RenderableAddressInterface $address, array $options = [])
     {
         $format = (isset($options['format'])) ? $options['format'] : self::DEFAULT_FORMAT;
         $twig = $this->twigProvider->fetchEnvironment($format);
@@ -58,13 +58,13 @@ class AddressRenderer implements AddressRendererInterface
         list($templateFile, $format) = explode('#', $template->getTemplateName());
 
         return $template->render(
-            array(
+            [
                 'address' => $address,
                 'format' => $format,
                 'locale' => (isset($options['locale']) ? $options['locale'] : $this->getLocale()),
                 'omit_recipient' => (isset($options['omit_recipient'])) ? (bool) $options['omit_recipient'] : false,
                 'omit_country' => (isset($options['omit_country'])) ? (bool) $options['omit_country'] : false,
-            )
+            ]
         );
     }
 

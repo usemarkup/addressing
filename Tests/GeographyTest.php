@@ -21,10 +21,10 @@ class GeographyTest extends \PHPUnit_Framework_TestCase
 
     public function euCountryCases()
     {
-        return array(
-            array('FR', true),
-            array('CH', false),
-        );
+        return [
+            ['FR', true],
+            ['CH', false],
+        ];
     }
 
     /**
@@ -37,9 +37,9 @@ class GeographyTest extends \PHPUnit_Framework_TestCase
 
     public function usRegionAbbreviations()
     {
-        return array(
-            array('NY', true),
-            array('ON', false),
-        );
+        return [
+            ['NY', true],
+            ['ON', false],
+        ];
     }
 }

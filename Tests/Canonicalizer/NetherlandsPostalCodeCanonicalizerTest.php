@@ -26,10 +26,10 @@ class NetherlandsPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
 
     public function postcodes()
     {
-        return array(
-            array('1012VF', '1012 VF'),
-            array('1012 vf', '1012 VF'),
-            array('1012', '1012'),
-        );
+        return [
+            ['1012VF', '1012 VF'],
+            ['1012 vf', '1012 VF'],
+            ['1012', '1012'],
+        ];
     }
 }

@@ -16,5 +16,5 @@ interface IntlAddressTemplateProviderInterface
      * @param  array             $options
      * @return \Twig_Template
      **/
-    public function getTemplateForCountry($country, \Twig_Environment $twig, $format, array $options = array());
+    public function getTemplateForCountry($country, \Twig_Environment $twig, $format, array $options = []);
 }

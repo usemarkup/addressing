@@ -33,7 +33,7 @@ class HtmlElement
      * @param array  $attributes The element's attributes as an associative array.  Null values signify valueless attributes.
      * @param array  $options    The options that apply to this element ('is_closing', 'break_after' and 'xml_style', all Booleans)
      **/
-    public function __construct($name, array $attributes = array(), array $options = array())
+    public function __construct($name, array $attributes = [], array $options = [])
     {
         $this->name = $name;
         $this->attributes = $attributes;
@@ -95,10 +95,10 @@ class HtmlElement
      **/
     protected function getDefaultOptions()
     {
-        return array(
+        return [
             'is_closing'                => true,
             'break_after'               => true,
             'xml_style'                 => false,
-            );
+        ];
     }
 }

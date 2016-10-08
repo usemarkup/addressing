@@ -16,7 +16,7 @@ class ProviderFactory
 
     public function __construct()
     {
-        $this->providers = array();
+        $this->providers = [];
     }
 
     /**

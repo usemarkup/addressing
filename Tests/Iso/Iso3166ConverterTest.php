@@ -29,9 +29,9 @@ class Iso3166ConverterTest extends \PHPUnit_Framework_TestCase
 
     public function codes()
     {
-        return array(
-            array('GB', 'GBR'),
-            array('TC', 'TCA'),
-        );
+        return [
+            ['GB', 'GBR'],
+            ['TC', 'TCA'],
+        ];
     }
 }

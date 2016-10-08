@@ -18,7 +18,7 @@ class HtmlElementTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAttributes()
     {
-        $attrs = array('class' => 'one two three', 'rel' => 'relative');
+        $attrs = ['class' => 'one two three', 'rel' => 'relative'];
         $element = new HtmlElement('span', $attrs);
         $this->assertEquals($attrs, $element->getAttributes());
     }
@@ -26,14 +26,14 @@ class HtmlElementTest extends \PHPUnit_Framework_TestCase
     public function testIsClosingByDefault()
     {
         $closing = true;
-        $element = new HtmlElement('span', array());
+        $element = new HtmlElement('span', []);
         $this->assertSame($closing, $element->isClosing());
     }
 
     public function testShouldBreakAfter()
     {
         $shouldBreakAfter = true;
-        $element = new HtmlElement('span', array(), array('break_after' => true));
+        $element = new HtmlElement('span', [], ['break_after' => true]);
         $this->assertSame($shouldBreakAfter, $element->shouldBreakAfter());
     }
 
@@ -45,7 +45,7 @@ class HtmlElementTest extends \PHPUnit_Framework_TestCase
 
     public function testSetAsXmlStyle()
     {
-        $element = new HtmlElement('span', array(), array('xml_style' => true));
+        $element = new HtmlElement('span', [], ['xml_style' => true]);
         $this->assertTrue($element->shouldUseXmlStyle());
     }
 }

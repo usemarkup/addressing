@@ -9,10 +9,10 @@ class AddressTest extends \PHPUnit_Framework_TestCase
     public function testAddress()
     {
         $country = 'GB';
-        $streetLines = array(
+        $streetLines = [
             '999 Letsbe Avenue',
             'Anydistrict'
-        );
+        ];
         $locality = 'Anytown';
         $postalCode = 'AB1 2CD';
         $region = 'Anyshire';

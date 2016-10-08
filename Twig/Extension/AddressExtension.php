@@ -27,9 +27,9 @@ class AddressExtension extends \Twig_Extension
 
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('address', array($this, 'renderAddress'), array('is_safe' => array('html'))),
-            );
+        return [
+            new \Twig_SimpleFunction('address', [$this, 'renderAddress'], ['is_safe' => ['html']]),
+        ];
     }
 
     /**
@@ -38,7 +38,7 @@ class AddressExtension extends \Twig_Extension
      * @param  RenderableAddressInterface $address
      * @return string
      **/
-    public function renderAddress(RenderableAddressInterface $address, $options = array())
+    public function renderAddress(RenderableAddressInterface $address, $options = [])
     {
         return $this->addressRenderer->render($address, $options);
     }

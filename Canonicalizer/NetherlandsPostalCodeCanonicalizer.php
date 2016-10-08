@@ -15,6 +15,6 @@ class NetherlandsPostalCodeCanonicalizer implements CanonicalizerInterface
             return $input;
         }
 
-        return implode(' ', array(substr($input, 0, 4), mb_strtoupper(substr($input, -2, 2))));
+        return implode(' ', [substr($input, 0, 4), mb_strtoupper(substr($input, -2, 2))]);
     }
 }

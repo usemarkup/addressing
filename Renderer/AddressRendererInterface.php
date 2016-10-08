@@ -16,5 +16,5 @@ interface AddressRendererInterface
      * @param  array                      $options
      * @return string
      **/
-    public function render(RenderableAddressInterface $address, array $options = array());
+    public function render(RenderableAddressInterface $address, array $options = []);
 }

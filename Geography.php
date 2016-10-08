@@ -7,9 +7,9 @@ namespace Markup\Addressing;
  */
 class Geography
 {
-    private static $euCountries = array('AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB');
+    private static $euCountries = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'];
 
-    private static $usStates = array(
+    private static $usStates = [
         'AL' => "Alabama",
         'AK' => "Alaska",
         'AZ' => "Arizona",
@@ -61,9 +61,9 @@ class Geography
         'WV' => "West Virginia",
         'WI' => "Wisconsin",
         'WY' => "Wyoming",
-    );
+    ];
 
-    private static $canadaProvincesEn = array(
+    private static $canadaProvincesEn = [
         "BC" => "British Columbia",
         "ON" => "Ontario",
         "NL" => "Newfoundland and Labrador",
@@ -77,9 +77,9 @@ class Geography
         "NT" => "Northwest Territories",
         "NU" => "Nunavut",
         "YT" => "Yukon Territory",
-    );
+    ];
 
-    private static $canadaProvincesFr = array(
+    private static $canadaProvincesFr = [
         "AB" => "Alberta",
         "BC" => "Colombie-Britannique",
         "MB" => "Manitoba",
@@ -93,7 +93,7 @@ class Geography
         "QC" => "Québec",
         "SK" => "Saskatchewan",
         "YT" => "Yukon",
-    );
+    ];
 
     /**
      * Gets whether the country or address are in the EU.

@@ -29,12 +29,12 @@ class SwedenPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
 
     public function postalCodes()
     {
-        return array(
-            array('SE-12345', '123 45'),
-            array('S-12345', '123 45'),
-            array('12345', '123 45'),
-            array('123 456', '123 456'),
-            array('12 345', '123 45'),
-        );
+        return [
+            ['SE-12345', '123 45'],
+            ['S-12345', '123 45'],
+            ['12345', '123 45'],
+            ['123 456', '123 456'],
+            ['12 345', '123 45'],
+        ];
     }
 }

@@ -27,16 +27,16 @@ class StreetAddressParserTest extends \PHPUnit_Framework_TestCase
 
     public function cases()
     {
-        return array(
-            array(array(), null, null, null, null, null),
-            array(array('1600 Pennsylvania Avenue'), 'Pennsylvania Avenue', '1600', null, '1600', null),
-            array(array('Heleneborgsgatan 56', 'Skanstull'), 'Heleneborgsgatan', '56', 'Skanstull', '56', null),
-            array(array('1600', 'Pennsylvania Avenue'), 'Pennsylvania Avenue', '1600', null, '1600', null),
-            array(array('Haagstraat 23A'), 'Haagstraat', '23A', null, '23', 'A'),
-            array(array('Haagstraat 23 A-I'), 'Haagstraat', '23 A-I', null, '23', 'A-I'),
-            array(array('1000 1/2 5th Avenue'), '5th Avenue', '1000 1/2', null, '1000', '1/2'),
-            array(array('65 High Street'), 'High Street', '65', null, '65', null),
-            array(array('Shop', 'Haagstraat, 123'), 'Haagstraat', '123', null, '123', null),
-        );
+        return [
+            [[], null, null, null, null, null],
+            [['1600 Pennsylvania Avenue'], 'Pennsylvania Avenue', '1600', null, '1600', null],
+            [['Heleneborgsgatan 56', 'Skanstull'], 'Heleneborgsgatan', '56', 'Skanstull', '56', null],
+            [['1600', 'Pennsylvania Avenue'], 'Pennsylvania Avenue', '1600', null, '1600', null],
+            [['Haagstraat 23A'], 'Haagstraat', '23A', null, '23', 'A'],
+            [['Haagstraat 23 A-I'], 'Haagstraat', '23 A-I', null, '23', 'A-I'],
+            [['1000 1/2 5th Avenue'], '5th Avenue', '1000 1/2', null, '1000', '1/2'],
+            [['65 High Street'], 'High Street', '65', null, '65', null],
+            [['Shop', 'Haagstraat, 123'], 'Haagstraat', '123', null, '123', null],
+        ];
     }
 }

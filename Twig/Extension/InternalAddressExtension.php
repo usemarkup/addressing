@@ -39,7 +39,7 @@ class InternalAddressExtension extends \Twig_Extension
      **/
     public function getTokenParsers()
     {
-        $tags = array('address', 'recipient', 'streetlines', 'streetline', 'locality', 'region', 'postalcode', 'country');
+        $tags = ['address', 'recipient', 'streetlines', 'streetline', 'locality', 'region', 'postalcode', 'country'];
         $nodeProvider = $this->getNodeProvider();
         $tokenParsers = array_map(
             function($tag) use ($nodeProvider) {
@@ -47,7 +47,7 @@ class InternalAddressExtension extends \Twig_Extension
             },
             $tags
             );
-        $selfClosingTags = array('break', 'space');
+        $selfClosingTags = ['break', 'space'];
 
         return array_merge(
             $tokenParsers,

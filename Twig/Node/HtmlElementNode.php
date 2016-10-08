@@ -25,7 +25,7 @@ class HtmlElementNode extends \Twig_Node
     public function __construct(HtmlElement $element, \Twig_NodeInterface $body = null, $lineno, $tag)
     {
         $this->element = $element;
-        parent::__construct((null !== $body) ? array('body' => $body) : array(), array(), $lineno, $tag);
+        parent::__construct((null !== $body) ? ['body' => $body] : [], [], $lineno, $tag);
     }
 
     /**

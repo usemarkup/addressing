@@ -58,7 +58,7 @@ class StreetAddressParser
                 );
             }
         };
-        $parsers = array($parseOutAddressWithNumberBefore, $parseOutAddressWithNumberAfter);
+        $parsers = [$parseOutAddressWithNumberBefore, $parseOutAddressWithNumberAfter];
 
         foreach ($lines as $index => $line) {
             foreach ($parsers as $parser) {
@@ -94,10 +94,10 @@ class StreetAddressParser
     {
         preg_match('/^(\d+)(.*)$/', $houseNumber, $matches);
 
-        return array(
+        return [
             'original' => $houseNumber,
             'without_addition' => (!empty($matches[1])) ? $matches[1] : null,
             'addition' => (!empty($matches[2])) ? trim($matches[2]) : null,
-        );
+        ];
     }
 }

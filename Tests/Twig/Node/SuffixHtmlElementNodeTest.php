@@ -37,7 +37,7 @@ class SuffixHtmlElementNodeTest extends \PHPUnit_Framework_TestCase
         $this->el
             ->expects($this->any())
             ->method('getAttributes')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
         $compiler
             ->expects($this->at(0))
             ->method('addDebugInfo')
@@ -63,7 +63,7 @@ class SuffixHtmlElementNodeTest extends \PHPUnit_Framework_TestCase
         $this->el
             ->expects($this->any())
             ->method('getAttributes')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
         $this->el
             ->expects($this->any())
             ->method('shouldUseXmlStyle')
@@ -93,7 +93,7 @@ class SuffixHtmlElementNodeTest extends \PHPUnit_Framework_TestCase
         $this->el
             ->expects($this->any())
             ->method('getAttributes')
-            ->will($this->returnValue(array('class' => 'breaky')));
+            ->will($this->returnValue(['class' => 'breaky']));
         $compiler
             ->expects($this->at(0))
             ->method('addDebugInfo')

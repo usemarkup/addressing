@@ -26,10 +26,10 @@ class CanadaPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
 
     public function postalCodes()
     {
-        return array(
-            array('l3f6y7', 'L3F 6Y7'),
-            array('f6g  3E2', 'F6G 3E2'),
-            array('L3F 5T2', 'L3F 5T2'),
-        );
+        return [
+            ['l3f6y7', 'L3F 6Y7'],
+            ['f6g  3E2', 'F6G 3E2'],
+            ['L3F 5T2', 'L3F 5T2'],
+        ];
     }
 }

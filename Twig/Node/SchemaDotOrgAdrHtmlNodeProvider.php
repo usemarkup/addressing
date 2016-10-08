@@ -19,11 +19,11 @@ class SchemaDotOrgAdrHtmlNodeProvider implements ProviderInterface
                 $node = new HtmlElementNode(
                     new HtmlElement(
                         'p',
-                        array(
+                        [
                             'class' => 'adr',
                             'itemscope' => null,
                             'itemtype' => 'http://schema.org/PostalAddress',
-                            )
+                        ]
                         ),
                     $body,
                     $lineno,
@@ -34,12 +34,12 @@ class SchemaDotOrgAdrHtmlNodeProvider implements ProviderInterface
                 $node = new HtmlElementNode(
                     new HtmlElement(
                         'span',
-                        array(
+                        [
                             'itemprop' => 'name',
                             'itemscope' => null,
                             'itemtype' => 'http://schema.org/Person',
                             'class' => 'recipient',
-                            )
+                        ]
                         ),
                     $body,
                     $lineno,
@@ -50,10 +50,10 @@ class SchemaDotOrgAdrHtmlNodeProvider implements ProviderInterface
                 $node = new HtmlElementNode(
                     new HtmlElement(
                         'span',
-                        array(
+                        [
                             'class' => 'street-address',
                             'itemprop' => 'streetAddress'
-                            )
+                        ]
                         ),
                     $body,
                     $lineno,
@@ -67,10 +67,10 @@ class SchemaDotOrgAdrHtmlNodeProvider implements ProviderInterface
                 $node = new HtmlElementNode(
                     new HtmlElement(
                         'span',
-                        array(
+                        [
                             'class' => 'locality',
                             'itemprop' => 'addressLocality',
-                            )
+                        ]
                         ),
                     $body,
                     $lineno,
@@ -81,10 +81,10 @@ class SchemaDotOrgAdrHtmlNodeProvider implements ProviderInterface
                 $node = new HtmlElementNode(
                     new HtmlElement(
                         'span',
-                        array(
+                        [
                             'class' => 'region',
                             'itemprop' => 'addressRegion',
-                            )
+                        ]
                         ),
                     $body,
                     $lineno,
@@ -95,10 +95,10 @@ class SchemaDotOrgAdrHtmlNodeProvider implements ProviderInterface
                 $node = new HtmlElementNode(
                     new HtmlElement(
                         'span',
-                        array(
+                        [
                             'class' => 'postal-code',
                             'itemprop' => 'postalCode',
-                            )
+                        ]
                         ),
                     $body,
                     $lineno,
@@ -110,12 +110,12 @@ class SchemaDotOrgAdrHtmlNodeProvider implements ProviderInterface
                 $node = new HtmlElementNode(
                     new HtmlElement(
                         'span',
-                        array(
+                        [
                             'class' => 'country-name',
                             'itemprop' => 'addressCountry',
                             'itemscope' => null,
                             'itemtype' => 'http://schema.org/Country',
-                            )
+                        ]
                         ),
                     $body,
                     $lineno,

@@ -7,7 +7,7 @@ namespace Markup\Addressing\Iso;
  */
 class Iso3166Converter
 {
-    private static $codes = array(
+    private static $codes = [
         'AD' => 'AND',//Andorra
         'AE' => 'ARE',//United Arab Emirates
         'AF' => 'AFG',//Afghanistan
@@ -257,7 +257,7 @@ class Iso3166Converter
         'ZA' => 'ZAF',//South Africa
         'ZM' => 'ZMB',//Zambia
         'ZW' => 'ZWE',//Zimbabwe
-    );
+    ];
 
     /**
      * Gets the ISO3166 alpha-3 code that corresponds to the provided alpha-2 code.

@@ -34,7 +34,7 @@ class IntlAddressTemplateProvider implements IntlAddressTemplateProviderInterfac
     /**
      * {@inheritdoc}
      **/
-    public function getTemplateForCountry($country, \Twig_Environment $twig, $format, array $options = array())
+    public function getTemplateForCountry($country, \Twig_Environment $twig, $format, array $options = [])
     {
         $extension = $this->extensionProvider->fetchExtension($format);
         if (!$twig->hasExtension($extension->getName())) {

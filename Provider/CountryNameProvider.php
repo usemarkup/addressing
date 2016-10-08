@@ -32,7 +32,7 @@ class CountryNameProvider implements CountryNameProviderInterface
             throw new \InvalidArgumentException('localeProvider constructor param must be a callable');
         }
         $this->localeProvider = $localeProvider;
-        $this->displayCountries = array();
+        $this->displayCountries = [];
     }
 
     /**

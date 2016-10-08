@@ -35,9 +35,9 @@ class CanonicalizeAddressDecoratorTest extends \PHPUnit_Framework_TestCase
 
     public function codesForCountries()
     {
-        return array(
-            array(' WD36TH', 'WD3 6TH', 'GB'),
-            array(' l4R3e6', 'L4R 3E6', 'CA'),
-        );
+        return [
+            [' WD36TH', 'WD3 6TH', 'GB'],
+            [' l4R3e6', 'L4R 3E6', 'CA'],
+        ];
     }
 }

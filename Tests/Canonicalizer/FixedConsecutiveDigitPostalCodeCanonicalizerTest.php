@@ -27,9 +27,9 @@ class FixedConsecutiveDigitPostalCodeCanonicalizerTest extends \PHPUnit_Framewor
 
     public function fiveDigitCodes()
     {
-        return array(
-            array('AQ-244 66', '24466'),
-            array('1235854', '1235854'),
-        );
+        return [
+            ['AQ-244 66', '24466'],
+            ['1235854', '1235854'],
+        ];
     }
 }

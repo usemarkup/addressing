@@ -26,9 +26,9 @@ class CountryNameExtension extends \Twig_Extension
 
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('country_name', array($this, 'getNameForCountry')),
-            );
+        return [
+            new \Twig_SimpleFunction('country_name', [$this, 'getNameForCountry']),
+        ];
     }
 
     /**

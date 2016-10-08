@@ -26,7 +26,7 @@ class KeyedEnvironmentServiceProvider
             throw new \InvalidArgumentException('Generator must be a callable.');
         }
         $this->generator = $generator;
-        $this->environments = array();
+        $this->environments = [];
     }
 
     /**

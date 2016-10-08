@@ -37,7 +37,7 @@ class HtmlElementNodeTest extends \PHPUnit_Framework_TestCase
         $this->el
             ->expects($this->any())
             ->method('getAttributes')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
         $compiler
             ->expects($this->once())
             ->method('addDebugInfo')
@@ -68,7 +68,7 @@ class HtmlElementNodeTest extends \PHPUnit_Framework_TestCase
         $this->el
             ->expects($this->any())
             ->method('getAttributes')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
         $this->el
             ->expects($this->any())
             ->method('isClosing')
@@ -108,7 +108,7 @@ class HtmlElementNodeTest extends \PHPUnit_Framework_TestCase
         $this->el
             ->expects($this->any())
             ->method('getAttributes')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
         $this->el
             ->expects($this->any())
             ->method('isClosing')
@@ -154,10 +154,10 @@ class HtmlElementNodeTest extends \PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('span'));
-        $attributes = array(
+        $attributes = [
             'class' => 'element one',
             'id' => 'identifier',
-            );
+        ];
         $this->el
             ->expects($this->any())
             ->method('getAttributes')
@@ -189,11 +189,11 @@ class HtmlElementNodeTest extends \PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('span'));
-        $attributes = array(
+        $attributes = [
             'class' => 'adr',
             'itemscope' => null,
             'itemtype' => 'http://schema.org/PostalAddress',
-            );
+        ];
         $this->el
             ->expects($this->any())
             ->method('getAttributes')

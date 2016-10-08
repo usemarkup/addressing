@@ -8,19 +8,19 @@ class PostalCodeVariantTest extends \PHPUnit_Framework_TestCase
 {
     public function testIsPostalCodeVariant()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\PostalCodeVariantInterface', new PostalCodeVariant(array()));
+        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\PostalCodeVariantInterface', new PostalCodeVariant([]));
     }
 
     public function testSimpleVariant()
     {
-        $variant = new PostalCodeVariant(array(5));
+        $variant = new PostalCodeVariant([5]);
         $dirtyCode = '123-45';
         $this->assertEquals('12345', $variant->format($dirtyCode));
     }
 
     public function testComplexVariant()
     {
-        $variant = new PostalCodeVariant(array(5, 4), '-');
+        $variant = new PostalCodeVariant([5, 4], '-');
         $code = '123456789';
         $this->assertEquals('12345-6789', $variant->format($code));
     }

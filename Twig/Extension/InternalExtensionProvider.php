@@ -14,7 +14,7 @@ class InternalExtensionProvider implements InternalExtensionProviderInterface
 
     public function __construct()
     {
-        $this->extensions = array();
+        $this->extensions = [];
     }
 
     /**
