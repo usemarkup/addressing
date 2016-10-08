@@ -26,13 +26,11 @@ class PostalCodeCanonicalizer
                 $ukCanonicalizer = new UnitedKingdomPostcodeCanonicalizer();
 
                 return $ukCanonicalizer->canonicalize($postalCode);
-                break;
 
             case 'SE':
                 $seCanonicalizer = new SwedenPostalCodeCanonicalizer();
 
                 return $seCanonicalizer->canonicalize($postalCode);
-                break;
 
             case 'FI':
             case 'IT':
@@ -40,18 +38,15 @@ class PostalCodeCanonicalizer
                 $fiveDigitCanonicalizer = new FixedConsecutiveDigitPostalCodeCanonicalizer(5);
 
                 return $fiveDigitCanonicalizer->canonicalize($postalCode);
-                break;
 
             case 'PT':
                 $variant = new CombinedPostalCodeVariant(array(new PostalCodeVariant(array(4)), new PostalCodeVariant(array(4, 3), '-')));
 
                 return $variant->format($postalCode);
-                break;
 
             case 'NL':
                 $nlCanonicalizer = new NetherlandsPostalCodeCanonicalizer();
                 return $nlCanonicalizer->canonicalize($postalCode);
-                break;
 
             case 'NO':
             case 'DK':
@@ -64,11 +59,9 @@ class PostalCodeCanonicalizer
                 $caCanonicalizer = new CanadaPostalCodeCanonicalizer();
 
                 return $caCanonicalizer->canonicalize($postalCode);
-                break;
 
             default:
                 return $postalCode;
-                break;
         }
     }
 }
