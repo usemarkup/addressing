@@ -37,7 +37,11 @@ class IntlAddressTemplateProvider implements IntlAddressTemplateProviderInterfac
     public function getTemplateForCountry($country, \Twig_Environment $twig, $format, array $options = [])
     {
         $extension = $this->extensionProvider->fetchExtension($format);
-        if (!$twig->hasExtension($extension->getName())) {
+        //as of twig 1.26, an extension reference is the class name, not the name from getName
+        $extensionReference = (version_compare(\Twig_Environment::VERSION, '1.26.0', '>='))
+            ? get_class($extension)
+            : $extension->getName();
+        if (!$twig->hasExtension($extensionReference)) {
             $twig->addExtension($extension);
         }
         $templateFilePath = sprintf('address.%s.twig%s%s', strtolower($country), $this->delimiter, $format);
