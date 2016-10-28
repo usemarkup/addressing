@@ -6,8 +6,8 @@
 {% streetline %}{{ streetline }}{% endstreetline %}{% break %}
 {% endfor %}
 {% endstreetlines %}
-{% postalcode %}{{ address.postalcode }}{% endpostalcode %}{% space %}{% space %}{% locality %}{{ address.locality|upper }}{% endlocality %}{% break %}
-{% if address.region|length > 0 %}{% region %}{{ address.region }}{% endregion %}{% endif %}
-{% if not omit_country %}{% country %}{{ country_name(address.country, locale) }}{% endcountry %}{% endif %}
+{% postalcode %}{{ address.postalcode }}{% endpostalcode %}{% space %}{% space %}{% locality %}{{ address.locality|upper }}{% endlocality %}{% if address.region|length > 0 %}{% break %}
+{% region %}{{ address.region }}{% endregion %}{% endif %}{% if not omit_country %}{% break %}
+{% country %}{{ country_name(address.country, locale) }}{% endcountry %}{% endif %}
 {% endaddress %}
 {% endblock spec %}
