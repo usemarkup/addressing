@@ -11,10 +11,11 @@ class NetherlandsPostalCodeCanonicalizer implements CanonicalizerInterface
      **/
     public function canonicalize($input)
     {
-        if (!preg_match('/^\d{4}\s?[A-Za-z]{2}$/', $input)) {
+        $strippedInput = str_replace(' ', '', $input);
+        if (!preg_match('/^\d{4}[A-Za-z]{2}$/', $strippedInput)) {
             return $input;
         }
 
-        return implode(' ', [substr($input, 0, 4), mb_strtoupper(substr($input, -2, 2))]);
+        return implode(' ', [substr($strippedInput, 0, 4), mb_strtoupper(substr($strippedInput, -2, 2))]);
     }
 }
