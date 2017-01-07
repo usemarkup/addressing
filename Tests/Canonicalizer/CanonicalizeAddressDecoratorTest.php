@@ -8,7 +8,7 @@ class CanonicalizeAddressDecoratorTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->address = $this->getMock('Markup\Addressing\AddressInterface');
+        $this->address = $this->createMock('Markup\Addressing\AddressInterface');
         $this->decorator = new CanonicalizeAddressDecorator($this->address);
     }
 
