@@ -9,6 +9,8 @@ use Markup\Addressing\RenderableAddressInterface;
  **/
 interface AddressRendererInterface
 {
+    const DEFAULT_FORMAT = 'html';
+
     /**
      * Render the provided address.
      *

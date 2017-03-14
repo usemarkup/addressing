@@ -2,24 +2,15 @@
 
 namespace Markup\Addressing\Renderer;
 
+use Markup\Addressing\Provider\CountryNameProviderInterface;
 use Markup\Addressing\RenderableAddressInterface;
 use Markup\Addressing\Provider\IntlAddressTemplateProviderInterface;
-use Markup\Addressing\Provider\KeyedEnvironmentServiceProvider;
 
 /**
  * An object that can render addresses.
  **/
 class AddressRenderer implements AddressRendererInterface
 {
-    const DEFAULT_FORMAT = 'html';
-
-    /**
-     * A Twig environment provider = provides a unique instance of the vanilla Twig environment for each format being used.
-     *
-     * @var KeyedEnvironmentServiceProvider
-     **/
-    private $twigProvider;
-
     /**
      * An object that can provide address templates given a country identifier.
      *
@@ -28,21 +19,28 @@ class AddressRenderer implements AddressRendererInterface
     private $templateProvider;
 
     /**
+     * @var CountryNameProviderInterface
+     */
+    private $countryNameProvider;
+
+    /**
      * @var string|callable
      */
     private $locale;
 
     /**
-     * @param KeyedEnvironmentServiceProvider      $twig             A Twig environment provider.
      * @param IntlAddressTemplateProviderInterface $templateProvider
+     * @param CountryNameProviderInterface         $countryNameProvider
      * @param string|callable                      $locale
      **/
-    public function __construct(KeyedEnvironmentServiceProvider $twigProvider, IntlAddressTemplateProviderInterface $templateProvider, $locale = null)
+    public function __construct(
+        IntlAddressTemplateProviderInterface $templateProvider,
+        CountryNameProviderInterface $countryNameProvider,
+        $locale = null)
     {
-        $this->twigProvider = $twigProvider;
         $this->templateProvider = $templateProvider;
+        $this->countryNameProvider = $countryNameProvider;
         $this->locale = $locale ?: \Locale::getDefault();
-
     }
 
     /**
@@ -51,17 +49,19 @@ class AddressRenderer implements AddressRendererInterface
     public function render(RenderableAddressInterface $address, array $options = [])
     {
         $format = (isset($options['format'])) ? $options['format'] : self::DEFAULT_FORMAT;
-        $twig = $this->twigProvider->fetchEnvironment($format);
-        $template = $this->templateProvider->getTemplateForCountry($address->getCountry(), $twig, $format, $options);
-
-        //name will contain format after a hash sign
-        list($templateFile, $format) = explode('#', $template->getTemplateName());
+        $template = $this->templateProvider->getTemplateForCountry($address->getCountry(), $format, $options);
+        $locale = (isset($options['locale']) ? $options['locale'] : $this->getLocale());
 
         return $template->render(
             [
-                'address' => $address,
+                'recipient' => $address->getRecipient(),
+                'streetAddressLines' => $address->getStreetAddressLines(),
+                'locality' => $address->getLocality(),
+                'region' => $address->getRegion(),
+                'postalCode' => $address->getPostalCode(),
+                'country' => $address->getCountry(),
+                'countryName' => $this->countryNameProvider->getDisplayNameForCountry($address->getCountry(), $locale),
                 'format' => $format,
-                'locale' => (isset($options['locale']) ? $options['locale'] : $this->getLocale()),
                 'omit_recipient' => (isset($options['omit_recipient'])) ? (bool) $options['omit_recipient'] : false,
                 'omit_country' => (isset($options['omit_country'])) ? (bool) $options['omit_country'] : false,
             ]
