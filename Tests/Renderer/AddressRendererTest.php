@@ -93,6 +93,19 @@ United Kingdom";
         $this->assertEquals($expected, $rendered);
     }
 
+    public function testRenderFrenchAddress()
+    {
+        $expected = 'M Dommage, Rue de la Rue 24, 75006  PARIS, Frankreich';
+        $locale = 'de_DE';
+        $renderer = new AddressRenderer(
+            $this->templateProvider,
+            $this->countryNameProvider,
+            $locale
+        );
+        $rendered = $renderer->render($this->getFrAddress(), ['format' => 'comma_separated']);
+        $this->assertEquals($expected, $rendered);
+    }
+
     /**
      * @var AddressInterface
      */
@@ -104,5 +117,10 @@ United Kingdom";
     private function getSeAddress()
     {
         return new TestSeAddress();
+    }
+
+    private function getFrAddress()
+    {
+        return new TestFrAddress();
     }
 }
