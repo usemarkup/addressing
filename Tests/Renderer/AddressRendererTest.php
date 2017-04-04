@@ -42,7 +42,7 @@ class AddressRendererTest extends \PHPUnit_Framework_TestCase
         $locale = 'en_GB';
         $this->cacheDir = vfsStream::setup();
         $this->templateProvider = new IntlAddressHandlebarsTemplateProvider(
-            ['gb', 'se'],
+            ['gb', 'se', 'ie'],
             $this->cacheDir->url().'/'
         );
         $this->countryNameProvider = new CountryNameProvider(function () use ($locale) {
@@ -106,6 +106,13 @@ United Kingdom";
         $this->assertEquals($expected, $rendered);
     }
 
+    public function testRenderIrishAddress()
+    {
+        $expected = 'James Smith, Pub Cottage, Donegal, Co Donegal, Ireland';
+        $rendered = $this->renderer->render($this->getIeAddress(), ['format' => 'comma_separated']);
+        $this->assertEquals($expected, $rendered);
+    }
+
     /**
      * @var AddressInterface
      */
@@ -122,5 +129,10 @@ United Kingdom";
     private function getFrAddress()
     {
         return new TestFrAddress();
+    }
+
+    private function getIeAddress()
+    {
+        return new TestIeAddress();
     }
 }
