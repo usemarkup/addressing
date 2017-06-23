@@ -62,8 +62,8 @@ class AddressRenderer implements AddressRendererInterface
                 'country' => $address->getCountry(),
                 'countryName' => $this->countryNameProvider->getDisplayNameForCountry($address->getCountry(), $locale),
                 'format' => $format,
-                'omit_recipient' => (isset($options['omit_recipient'])) ? (bool) $options['omit_recipient'] : false,
-                'omit_country' => (isset($options['omit_country'])) ? (bool) $options['omit_country'] : false,
+                'omitRecipient' => (isset($options['omit_recipient'])) ? (bool) $options['omit_recipient'] : false,
+                'omitCountry' => (isset($options['omit_country'])) ? (bool) $options['omit_country'] : false,
             ]
         );
     }
