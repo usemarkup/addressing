@@ -52,7 +52,7 @@ class CountryNameProvider implements CountryNameProviderInterface
             $this->loadCountriesForLocale($localeToUse);
         }
         if (!isset($this->displayCountries[$localeToUse][$country])) {
-            return null;
+            return '';
         }
 
         return $this->displayCountries[$localeToUse][$country];

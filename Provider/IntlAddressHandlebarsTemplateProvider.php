@@ -102,7 +102,7 @@ class IntlAddressHandlebarsTemplateProvider implements IntlAddressTemplateProvid
             return '';
         }
 
-        return file_get_contents($handlebarsFilePath);
+        return file_get_contents($handlebarsFilePath) ?: '';
     }
 
     /**

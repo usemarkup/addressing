@@ -7,6 +7,11 @@ use PHPUnit\Framework\TestCase;
 
 class GeographyTest extends TestCase
 {
+    /**
+     * @var Geography
+     */
+    private $geography;
+
     protected function setUp()
     {
         $this->geography = new Geography();

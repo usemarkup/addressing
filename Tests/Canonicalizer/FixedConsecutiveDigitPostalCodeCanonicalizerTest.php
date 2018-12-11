@@ -8,6 +8,16 @@ use PHPUnit\Framework\TestCase;
 
 class FixedConsecutiveDigitPostalCodeCanonicalizerTest extends TestCase
 {
+    /**
+     * @var int
+     */
+    private $digits;
+
+    /**
+     * @var FixedConsecutiveDigitPostalCodeCanonicalizer
+     */
+    private $canonicalizer;
+
     protected function setUp()
     {
         $this->digits = 5;

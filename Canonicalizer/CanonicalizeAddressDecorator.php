@@ -45,12 +45,12 @@ class CanonicalizeAddressDecorator implements AddressInterface
     /**
      * Gets the numbered address line, counting from one.  If there is no address line for provided number, return false.
      *
-     * @param  int $line_number
-     * @return string|bool
+     * @param  int $lineNumber
+     * @return string|null
      **/
-    public function getStreetAddressLine($line_number)
+    public function getStreetAddressLine($lineNumber)
     {
-        return $this->address->getStreetAddressLine($line_number);
+        return $this->address->getStreetAddressLine($lineNumber);
     }
 
     /**

@@ -10,7 +10,22 @@ use PHPUnit\Framework\TestCase;
 */
 class CountryNameProviderTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var string
+     */
+    private $renderingLocale;
+
+    /**
+     * @var callable
+     */
+    private $localeProvider;
+
+    /**
+     * @var CountryNameProvider
+     */
+    private $provider;
+
+    protected function setUp()
     {
         $this->renderingLocale = 'en_GB';
         $this->localeProvider = function () {

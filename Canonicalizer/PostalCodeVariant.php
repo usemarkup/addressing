@@ -33,7 +33,7 @@ class PostalCodeVariant implements PostalCodeVariantInterface
     public function format($postalCode)
     {
         $codeLength = array_sum($this->parts);
-        $strippedCode = preg_replace('/[^A-Z0-9]/', '', $postalCode);
+        $strippedCode = preg_replace('/[^A-Z0-9]/', '', $postalCode) ?? '';
         if ($codeLength !== strlen($strippedCode)) {
             return $postalCode;
         }

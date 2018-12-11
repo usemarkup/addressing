@@ -123,7 +123,7 @@ class Geography
             return null;
         }
 
-        return array_search($name, self::$usStates);
+        return (string) array_search($name, self::$usStates);
     }
 
     /**
@@ -133,10 +133,10 @@ class Geography
     public function getCanadianProvinceAbbreviationForName($name)
     {
         if (in_array($name, self::$canadaProvincesEn)) {
-            return array_search($name, self::$canadaProvincesEn);
+            return (string) array_search($name, self::$canadaProvincesEn);
         }
         if (in_array($name, self::$canadaProvincesFr)) {
-            return array_search($name, self::$canadaProvincesFr);
+            return (string) array_search($name, self::$canadaProvincesFr);
         }
 
         return null;

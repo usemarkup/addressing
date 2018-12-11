@@ -263,7 +263,7 @@ class Iso3166Converter
      * Gets the ISO3166 alpha-3 code that corresponds to the provided alpha-2 code.
      *
      * @param string $alpha2
-     * @return string
+     * @return string|null
      */
     public function convertAlpha2ToAlpha3($alpha2)
     {
@@ -278,7 +278,7 @@ class Iso3166Converter
      * Gets the ISO3166 alpha-2 code that corresponds to the provided alpha-3 code.
      *
      * @param string $alpha3
-     * @return string
+     * @return string|null
      */
     public function convertAlpha3ToAlpha2($alpha3)
     {
@@ -287,6 +287,6 @@ class Iso3166Converter
             return null;
         }
 
-        return $alpha2;
+        return (string) $alpha2;
     }
 } 

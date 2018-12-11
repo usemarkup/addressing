@@ -23,17 +23,17 @@ class Address implements RenderableAddressInterface
     private $locality;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $postalCode;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $region;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $recipient;
 
@@ -41,9 +41,9 @@ class Address implements RenderableAddressInterface
      * @param string $country
      * @param array  $streetLines
      * @param string $locality
-     * @param string $postalCode
-     * @param string $region
-     * @param string $recipient
+     * @param string|null $postalCode
+     * @param string|null $region
+     * @param string|null $recipient
      */
     public function __construct($country, array $streetLines, $locality, $postalCode = null, $region = null, $recipient = null)
     {
@@ -118,7 +118,7 @@ class Address implements RenderableAddressInterface
      **/
     public function getRegion()
     {
-        return $this->region;
+        return $this->region ?? '';
     }
 
     /**
@@ -129,7 +129,7 @@ class Address implements RenderableAddressInterface
      **/
     public function getPostalCode()
     {
-        return $this->postalCode;
+        return $this->postalCode ?? '';
     }
 
     /**

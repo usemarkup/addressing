@@ -4,12 +4,14 @@ namespace Markup\Addressing\Tests\Canonicalizer;
 
 use Markup\Addressing\AddressInterface;
 use Markup\Addressing\Canonicalizer\CanonicalizeAddressDecorator;
-use PHPUnit\Framework\TestCase;
+use Mockery as m;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
-class CanonicalizeAddressDecoratorTest extends TestCase
+class CanonicalizeAddressDecoratorTest extends MockeryTestCase
 {
     /**
-     * @var AddressInterface
+     * @var AddressInterface|m\MockInterface
      */
     private $address;
 
@@ -20,7 +22,7 @@ class CanonicalizeAddressDecoratorTest extends TestCase
 
     protected function setUp()
     {
-        $this->address = $this->createMock(AddressInterface::class);
+        $this->address = m::mock(AddressInterface::class);
         $this->decorator = new CanonicalizeAddressDecorator($this->address);
     }
 
@@ -35,13 +37,11 @@ class CanonicalizeAddressDecoratorTest extends TestCase
     public function testCanonicalizesPostalCode($original, $expected, $country)
     {
         $this->address
-            ->expects($this->any())
-            ->method('getPostalCode')
-            ->will($this->returnValue($original));
+            ->shouldReceive('getPostalCode')
+            ->andReturn($original);
         $this->address
-            ->expects($this->any())
-            ->method('getCountry')
-            ->will($this->returnValue($country));
+            ->shouldReceive('getCountry')
+            ->andReturn($country);
         $this->assertEquals($expected, $this->decorator->getPostalCode());
     }
 

@@ -20,7 +20,7 @@ class UnitedKingdomPostcodeCanonicalizer implements CanonicalizerInterface
         }
 
         //second, remove any spaces, uppercase, and break off the last three characters of the string
-        $unspaced = mb_strtoupper(preg_replace('/\s/', '', $input), 'UTF-8');
+        $unspaced = mb_strtoupper(preg_replace('/\s/', '', $input) ?? '', 'UTF-8');
         $spaced = sprintf('%s %s', substr($unspaced, 0, -3), substr($unspaced, -3));
 
         //now check against the regex, and return unmodified if it doesn't pass

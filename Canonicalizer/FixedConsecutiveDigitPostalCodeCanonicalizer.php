@@ -19,13 +19,13 @@ class FixedConsecutiveDigitPostalCodeCanonicalizer implements CanonicalizerInter
     }
 
     /**
-     * @param mixed $input
+     * @param string $input
      *
      * @return mixed
      **/
     public function canonicalize($input)
     {
-        $filtered = preg_replace('/\D+/', '', $input);
+        $filtered = preg_replace('/\D+/', '', $input) ?? '';
         if (strlen($filtered) !== $this->digitLength) {
             return $input;
         }

@@ -9,8 +9,8 @@ class SwedenPostalCodeCanonicalizer implements CanonicalizerInterface
 {
     public function canonicalize($input)
     {
-        $numbersOnly = preg_replace('/\D/', '', $input);
-        if (strlen($numbersOnly) !== 5) {
+        $numbersOnly = preg_replace('/\D/', '', $input) ?? '';
+        if (is_array($numbersOnly) || strlen($numbersOnly) !== 5) {
             return $input;
         }
 
