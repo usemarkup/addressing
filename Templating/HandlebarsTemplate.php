@@ -18,7 +18,7 @@ class HandlebarsTemplate implements TemplateInterface
      * @param array $data
      * @return string
      */
-    public function render(array $data)
+    public function render(array $data): string
     {
         return call_user_func($this->renderFunction, $data);
     }

@@ -2,19 +2,31 @@
 
 namespace Markup\Addressing\Tests\Canonicalizer;
 
+use Markup\Addressing\AddressInterface;
 use Markup\Addressing\Canonicalizer\CanonicalizeAddressDecorator;
+use PHPUnit\Framework\TestCase;
 
-class CanonicalizeAddressDecoratorTest extends \PHPUnit_Framework_TestCase
+class CanonicalizeAddressDecoratorTest extends TestCase
 {
+    /**
+     * @var AddressInterface
+     */
+    private $address;
+
+    /**
+     * @var CanonicalizeAddressDecorator
+     */
+    private $decorator;
+
     protected function setUp()
     {
-        $this->address = $this->createMock('Markup\Addressing\AddressInterface');
+        $this->address = $this->createMock(AddressInterface::class);
         $this->decorator = new CanonicalizeAddressDecorator($this->address);
     }
 
     public function testIsAddress()
     {
-        $this->assertInstanceOf('Markup\Addressing\AddressInterface', $this->decorator);
+        $this->assertInstanceOf(AddressInterface::class, $this->decorator);
     }
 
     /**

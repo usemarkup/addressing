@@ -3,8 +3,9 @@
 namespace Markup\Addressing\Tests;
 
 use Markup\Addressing\Address;
+use PHPUnit\Framework\TestCase;
 
-class AddressTest extends \PHPUnit_Framework_TestCase
+class AddressTest extends TestCase
 {
     public function testAddress()
     {

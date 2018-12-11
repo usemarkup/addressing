@@ -8,5 +8,5 @@ interface TemplateInterface
      * @param array $data
      * @return string
      */
-    public function render(array $data);
+    public function render(array $data): string;
 }

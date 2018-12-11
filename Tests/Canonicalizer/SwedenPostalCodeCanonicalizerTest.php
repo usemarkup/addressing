@@ -2,12 +2,14 @@
 
 namespace Markup\Addressing\Tests\Canonicalizer;
 
+use Markup\Addressing\Canonicalizer\CanonicalizerInterface;
 use Markup\Addressing\Canonicalizer\SwedenPostalCodeCanonicalizer;
+use PHPUnit\Framework\TestCase;
 
 /**
 * A test for a canonicalizer for Swedish postal codes.
 */
-class SwedenPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
+class SwedenPostalCodeCanonicalizerTest extends TestCase
 {
     public function setUp()
     {
@@ -16,7 +18,7 @@ class SwedenPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
 
     public function testIsCanonicalizer()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\CanonicalizerInterface', $this->canonicalizer  );
+        $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer  );
     }
 
     /**

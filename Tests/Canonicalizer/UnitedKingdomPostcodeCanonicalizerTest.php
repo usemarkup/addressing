@@ -2,12 +2,14 @@
 
 namespace Markup\Addressing\Tests\Canonicalizer;
 
+use Markup\Addressing\Canonicalizer\CanonicalizerInterface;
 use Markup\Addressing\Canonicalizer\UnitedKingdomPostcodeCanonicalizer;
+use PHPUnit\Framework\TestCase;
 
 /**
 * A test for a canonicalizer object that can take a postal code that is recognisable as a United Kingdom postcode and transform it to a canonical form.
 */
-class UnitedKingdomPostcodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
+class UnitedKingdomPostcodeCanonicalizerTest extends TestCase
 {
     public function setUp()
     {
@@ -16,7 +18,7 @@ class UnitedKingdomPostcodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
 
     public function testIsCanonicalizer()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\CanonicalizerInterface', $this->canonicalizer);
+        $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer);
     }
 
     /**

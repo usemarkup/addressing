@@ -46,7 +46,7 @@ class AddressRenderer implements AddressRendererInterface
     /**
      * {@inheritdoc}
      **/
-    public function render(RenderableAddressInterface $address, array $options = [])
+    public function render(RenderableAddressInterface $address, array $options = []): string
     {
         $format = (isset($options['format'])) ? $options['format'] : self::DEFAULT_FORMAT;
         $template = $this->templateProvider->getTemplateForCountry($address->getCountry(), $format, $options);
@@ -68,10 +68,7 @@ class AddressRenderer implements AddressRendererInterface
         );
     }
 
-    /**
-     * @return string
-     */
-    private function getLocale()
+    private function getLocale(): string
     {
         if (is_callable($this->locale)) {
             return call_user_func($this->locale);

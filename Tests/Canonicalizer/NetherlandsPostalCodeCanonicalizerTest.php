@@ -2,9 +2,11 @@
 
 namespace Canonicalizer;
 
+use Markup\Addressing\Canonicalizer\CanonicalizerInterface;
 use Markup\Addressing\Canonicalizer\NetherlandsPostalCodeCanonicalizer;
+use PHPUnit\Framework\TestCase;
 
-class NetherlandsPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
+class NetherlandsPostalCodeCanonicalizerTest extends TestCase
 {
     protected function setUp()
     {
@@ -13,7 +15,7 @@ class NetherlandsPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
 
     public function testIsCanonicalizer()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\CanonicalizerInterface', $this->canonicalizer);
+        $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer);
     }
 
     /**

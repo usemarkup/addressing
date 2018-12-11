@@ -3,8 +3,10 @@
 namespace Markup\Addressing\Tests\Canonicalizer;
 
 use Markup\Addressing\Canonicalizer\CanadaPostalCodeCanonicalizer;
+use Markup\Addressing\Canonicalizer\CanonicalizerInterface;
+use PHPUnit\Framework\TestCase;
 
-class CanadaPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
+class CanadaPostalCodeCanonicalizerTest extends TestCase
 {
     protected function setUp()
     {
@@ -13,7 +15,7 @@ class CanadaPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
 
     public function testIsCanonicalizer()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\CanonicalizerInterface', $this->canonicalizer);
+        $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer);
     }
 
     /**

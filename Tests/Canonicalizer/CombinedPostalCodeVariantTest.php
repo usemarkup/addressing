@@ -4,12 +4,14 @@ namespace Markup\Addressing\Tests\Canonicalizer;
 
 use Markup\Addressing\Canonicalizer\CombinedPostalCodeVariant;
 use Markup\Addressing\Canonicalizer\PostalCodeVariant;
+use Markup\Addressing\Canonicalizer\PostalCodeVariantInterface;
+use PHPUnit\Framework\TestCase;
 
-class CombinedPostalCodeVariantTest extends \PHPUnit_Framework_TestCase
+class CombinedPostalCodeVariantTest extends TestCase
 {
     public function testIsPostalCodeVariant()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\PostalCodeVariantInterface', new CombinedPostalCodeVariant([]));
+        $this->assertInstanceOf(PostalCodeVariantInterface::class, new CombinedPostalCodeVariant([]));
     }
 
     public function testVariant()

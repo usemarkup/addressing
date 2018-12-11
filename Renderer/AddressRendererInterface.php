@@ -11,12 +11,5 @@ interface AddressRendererInterface
 {
     const DEFAULT_FORMAT = 'html';
 
-    /**
-     * Render the provided address.
-     *
-     * @param  RenderableAddressInterface $address
-     * @param  array                      $options
-     * @return string
-     **/
-    public function render(RenderableAddressInterface $address, array $options = []);
+    public function render(RenderableAddressInterface $address, array $options = []): string;
 }

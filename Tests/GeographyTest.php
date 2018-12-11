@@ -3,8 +3,9 @@
 namespace Markup\Addressing\Tests;
 
 use Markup\Addressing\Geography;
+use PHPUnit\Framework\TestCase;
 
-class GeographyTest extends \PHPUnit_Framework_TestCase
+class GeographyTest extends TestCase
 {
     protected function setUp()
     {
