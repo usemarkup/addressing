@@ -8,6 +8,11 @@ use PHPUnit\Framework\TestCase;
 
 class StreetAddressParserTest extends TestCase
 {
+    /**
+     * @var StreetAddressParser
+     */
+    private $parser;
+
     protected function setUp()
     {
         $this->parser = new StreetAddressParser();

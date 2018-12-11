@@ -1,6 +1,6 @@
 <?php
 
-namespace Canonicalizer;
+namespace Markup\Addressing\Tests\Canonicalizer;
 
 use Markup\Addressing\Canonicalizer\CanonicalizerInterface;
 use Markup\Addressing\Canonicalizer\NetherlandsPostalCodeCanonicalizer;
@@ -8,6 +8,11 @@ use PHPUnit\Framework\TestCase;
 
 class NetherlandsPostalCodeCanonicalizerTest extends TestCase
 {
+    /**
+     * @var NetherlandsPostalCodeCanonicalizer
+     */
+    private $canonicalizer;
+
     protected function setUp()
     {
         $this->canonicalizer = new NetherlandsPostalCodeCanonicalizer();

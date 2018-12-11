@@ -1,6 +1,6 @@
 <?php
 
-namespace Provider;
+namespace Markup\Addressing\Tests\Provider;
 
 use Markup\Addressing\Provider\IntlAddressHandlebarsTemplateProvider;
 use Markup\Addressing\Provider\IntlAddressTemplateProviderInterface;

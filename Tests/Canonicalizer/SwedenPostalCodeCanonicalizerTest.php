@@ -11,7 +11,12 @@ use PHPUnit\Framework\TestCase;
 */
 class SwedenPostalCodeCanonicalizerTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var SwedenPostalCodeCanonicalizer
+     */
+    private $canonicalizer;
+
+    protected function setUp()
     {
         $this->canonicalizer = new SwedenPostalCodeCanonicalizer();
     }

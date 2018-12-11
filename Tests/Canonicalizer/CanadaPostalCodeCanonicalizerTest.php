@@ -8,6 +8,11 @@ use PHPUnit\Framework\TestCase;
 
 class CanadaPostalCodeCanonicalizerTest extends TestCase
 {
+    /**
+     * @var CanadaPostalCodeCanonicalizer
+     */
+    private $canonicalizer;
+
     protected function setUp()
     {
         $this->canonicalizer = new CanadaPostalCodeCanonicalizer();

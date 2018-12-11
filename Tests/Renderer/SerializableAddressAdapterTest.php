@@ -1,6 +1,6 @@
 <?php
 
-namespace Renderer;
+namespace Markup\Addressing\Tests\Renderer;
 
 use Markup\Addressing\Address;
 use Markup\Addressing\AddressInterface;

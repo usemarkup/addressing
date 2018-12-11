@@ -1,12 +1,17 @@
 <?php
 
-namespace Markup\Addressing\Tests\Provider;
+namespace Markup\Addressing\Tests\Iso;
 
 use Markup\Addressing\Iso\Iso3166Converter;
 use PHPUnit\Framework\TestCase;
 
 class Iso3166ConverterTest extends TestCase
 {
+    /**
+     * @var Iso3166Converter
+     */
+    private $converter;
+
     protected function setUp()
     {
         $this->converter = new Iso3166Converter();

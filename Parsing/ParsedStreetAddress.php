@@ -5,36 +5,36 @@ namespace Markup\Addressing\Parsing;
 class ParsedStreetAddress implements ParsedStreetAddressInterface
 {
     /**
-     * @var string
+     * @var ?string
      */
     private $street;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $streetNumber;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $district;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $streetNumberWithoutAddition;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $streetNumberAddition;
 
     /**
-     * @param string $street
-     * @param string $streetNumber
-     * @param string $district
-     * @param string $streetNumberWithoutAddition
-     * @param string $streetNumberAddition
+     * @param string|null $street
+     * @param string|null $streetNumber
+     * @param string|null $district
+     * @param string|null $streetNumberWithoutAddition
+     * @param string|null $streetNumberAddition
      */
     public function __construct(
         $street = null,
@@ -68,7 +68,7 @@ class ParsedStreetAddress implements ParsedStreetAddressInterface
     /**
      * Gets the street number without any non-numeric addition - i.e. for 23A will return '23'.
      *
-     * @return string
+     * @return string|null
      */
     public function getStreetNumberWithoutAddition()
     {
@@ -78,7 +78,7 @@ class ParsedStreetAddress implements ParsedStreetAddressInterface
     /**
      * Gets any non-numeric additional part of a street number - i.e. for 23A will return 'A'.
      *
-     * @return string
+     * @return string|null
      */
     public function getStreetNumberAddition()
     {

@@ -4,11 +4,7 @@ namespace Markup\Addressing\Handlebars;
 
 class OptionsHelper
 {
-    /**
-     * @param array $options
-     * @return string
-     */
-    public static function passthrough(array $options)
+    public static function passthrough(array $options): callable
     {
         return function ($options) {
             if (isset($options['fn']) && is_callable($options['fn'])) {
