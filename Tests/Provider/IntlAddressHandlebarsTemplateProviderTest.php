@@ -4,8 +4,9 @@ namespace Provider;
 
 use Markup\Addressing\Provider\IntlAddressHandlebarsTemplateProvider;
 use Markup\Addressing\Provider\IntlAddressTemplateProviderInterface;
+use PHPUnit\Framework\TestCase;
 
-class IntlAddressHandlebarsTemplateProviderTest extends \PHPUnit_Framework_TestCase
+class IntlAddressHandlebarsTemplateProviderTest extends TestCase
 {
     /**
      * @var array

@@ -3,11 +3,12 @@
 namespace Markup\Addressing\Tests\Provider;
 
 use Markup\Addressing\Provider\CountryNameProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
 * A test for a country name provider.
 */
-class CountryNameProviderTest extends \PHPUnit_Framework_TestCase
+class CountryNameProviderTest extends TestCase
 {
     public function setUp()
     {

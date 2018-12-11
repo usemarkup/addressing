@@ -4,8 +4,9 @@ namespace Markup\Addressing\Tests\Templating;
 
 use Markup\Addressing\Templating\HandlebarsTemplate;
 use Markup\Addressing\Templating\TemplateInterface;
+use PHPUnit\Framework\TestCase;
 
-class HandlebarsTemplateTest extends \PHPUnit_Framework_TestCase
+class HandlebarsTemplateTest extends TestCase
 {
     /**
      * @var array

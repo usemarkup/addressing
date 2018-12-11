@@ -2,9 +2,11 @@
 
 namespace Markup\Addressing\Tests\Parsing;
 
+use Markup\Addressing\Parsing\ParsedStreetAddressInterface;
 use Markup\Addressing\Parsing\StreetAddressParser;
+use PHPUnit\Framework\TestCase;
 
-class StreetAddressParserTest extends \PHPUnit_Framework_TestCase
+class StreetAddressParserTest extends TestCase
 {
     protected function setUp()
     {
@@ -17,7 +19,7 @@ class StreetAddressParserTest extends \PHPUnit_Framework_TestCase
     public function testParseLines($lines, $street, $streetNumber, $district, $streetNumberWithoutAddition, $streetNumberAddition)
     {
         $parsed = $this->parser->parseLines($lines);
-        $this->assertInstanceOf('Markup\Addressing\Parsing\ParsedStreetAddressInterface', $parsed);
+        $this->assertInstanceOf(ParsedStreetAddressInterface::class, $parsed);
         $this->assertEquals($street, $parsed->getStreet());
         $this->assertEquals($streetNumber, $parsed->getStreetNumber());
         $this->assertEquals($district, $parsed->getDistrict());

@@ -7,8 +7,9 @@ use Markup\Addressing\AddressInterface;
 use Markup\Addressing\RenderableAddressInterface;
 use Markup\Addressing\Renderer\SerializableAddressAdapter;
 use Mockery as m;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-class SerializableAddressAdapterTest extends \PHPUnit_Framework_TestCase
+class SerializableAddressAdapterTest extends MockeryTestCase
 {
     /**
      * @var AddressInterface|m\MockInterface
@@ -40,11 +41,6 @@ class SerializableAddressAdapterTest extends \PHPUnit_Framework_TestCase
             return implode(';', [$iso3166, $this->locale]);
         };
         $this->adapter = new SerializableAddressAdapter($this->address, $this->countryNameRenderer);
-    }
-
-    protected function tearDown()
-    {
-        m::close();
     }
 
     public function testIsRenderableAddress()

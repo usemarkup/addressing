@@ -10,13 +10,6 @@ use Symfony\Component\Intl\Intl;
 class CountryNameProvider implements CountryNameProviderInterface
 {
     /**
-     * An associative array of display countries keyed by the ISO3166 alpha-2 representations.
-     *
-     * @var array
-     **/
-    private $displayCountries;
-
-    /**
      * The locale string provider.
      *
      * @var callable
@@ -24,13 +17,14 @@ class CountryNameProvider implements CountryNameProviderInterface
     private $localeProvider;
 
     /**
-     * @param callable $locale
+     * An associative array of display countries keyed by the ISO3166 alpha-2 representations.
+     *
+     * @var array
      **/
-    public function __construct($localeProvider)
+    private $displayCountries;
+
+    public function __construct(callable $localeProvider)
     {
-        if (!is_callable($localeProvider)) {
-            throw new \InvalidArgumentException('localeProvider constructor param must be a callable');
-        }
         $this->localeProvider = $localeProvider;
         $this->displayCountries = [];
     }

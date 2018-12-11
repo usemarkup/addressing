@@ -2,9 +2,11 @@
 
 namespace Markup\Addressing\Tests\Canonicalizer;
 
+use Markup\Addressing\Canonicalizer\CanonicalizerInterface;
 use Markup\Addressing\Canonicalizer\FixedConsecutiveDigitPostalCodeCanonicalizer;
+use PHPUnit\Framework\TestCase;
 
-class FixedConsecutiveDigitPostalCodeCanonicalizerTest extends \PHPUnit_Framework_TestCase
+class FixedConsecutiveDigitPostalCodeCanonicalizerTest extends TestCase
 {
     protected function setUp()
     {
@@ -14,7 +16,7 @@ class FixedConsecutiveDigitPostalCodeCanonicalizerTest extends \PHPUnit_Framewor
 
     public function testIsCanonicalizer()
     {
-        $this->assertInstanceOf('Markup\Addressing\Canonicalizer\CanonicalizerInterface', $this->canonicalizer);
+        $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer);
     }
 
     /**

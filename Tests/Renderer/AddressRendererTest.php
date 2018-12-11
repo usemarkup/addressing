@@ -11,11 +11,12 @@ use Markup\Addressing\Renderer\AddressRenderer;
 use Markup\Addressing\Renderer\AddressRendererInterface;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
+use PHPUnit\Framework\TestCase;
 
 /**
 * A test for an address renderer object.
 */
-class AddressRendererTest extends \PHPUnit_Framework_TestCase
+class AddressRendererTest extends TestCase
 {
     /**
      * @var vfsStreamDirectory

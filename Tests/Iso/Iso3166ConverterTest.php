@@ -3,8 +3,9 @@
 namespace Markup\Addressing\Tests\Provider;
 
 use Markup\Addressing\Iso\Iso3166Converter;
+use PHPUnit\Framework\TestCase;
 
-class Iso3166ConverterTest extends \PHPUnit_Framework_TestCase
+class Iso3166ConverterTest extends TestCase
 {
     protected function setUp()
     {
