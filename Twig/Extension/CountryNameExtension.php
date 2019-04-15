@@ -3,11 +3,13 @@
 namespace Markup\Addressing\Twig\Extension;
 
 use Markup\Addressing\Provider\CountryNameProviderInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
 * A Twig extension that provides a function that can provide the localized country name given an ISO3166 alpha-2.
 */
-class CountryNameExtension extends \Twig_Extension
+class CountryNameExtension extends AbstractExtension
 {
     /**
      * A country name provider object.
@@ -27,7 +29,7 @@ class CountryNameExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('country_name', [$this, 'getNameForCountry']),
+            new TwigFunction('country_name', [$this, 'getNameForCountry']),
         ];
     }
 
@@ -41,10 +43,5 @@ class CountryNameExtension extends \Twig_Extension
     public function getNameForCountry($country, $locale = null)
     {
         return $this->provider->getDisplayNameForCountry($country, $locale);
-    }
-
-    public function getName()
-    {
-        return 'markup_addressing.country_name';
     }
 }
