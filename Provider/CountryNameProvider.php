@@ -2,6 +2,7 @@
 
 namespace Markup\Addressing\Provider;
 
+use Symfony\Component\Intl\Countries;
 use Symfony\Component\Intl\Intl;
 
 /**
@@ -76,9 +77,7 @@ class CountryNameProvider implements CountryNameProviderInterface
      **/
     private function loadCountriesForLocale($locale)
     {
-        //load from Symfony Intl component
-        $regionBundle = Intl::getRegionBundle();
-        $this->displayCountries[$locale] = $regionBundle->getCountryNames($locale);
+        $this->displayCountries[$locale] = $this->getCountryNamesForLocale($locale);
     }
 
     /**
@@ -87,5 +86,17 @@ class CountryNameProvider implements CountryNameProviderInterface
     private function getLocale()
     {
         return call_user_func($this->localeProvider);
+    }
+
+    private function getCountryNamesForLocale(string $locale): array
+    {
+        if (!class_exists(Countries::class)) {
+            if (!method_exists(Intl::class, 'getRegionBundle')) {
+                throw new \LogicException();
+            }
+            return Intl::getRegionBundle()->getCountryNames($locale);
+        }
+
+        return Countries::getNames($locale);
     }
 }
