@@ -66,7 +66,8 @@ class IntlAddressHandlebarsTemplateProvider implements IntlAddressTemplateProvid
                 [
                     'flags' => Flags::FLAG_HANDLEBARSJS
                         | Flags::FLAG_ERROR_EXCEPTION
-                        | Flags::FLAG_THIS,
+                        | Flags::FLAG_THIS
+                        | (($format !== 'html') ? Flags::FLAG_NOESCAPE : 0),
                     'helpers' => $this->getHelperSetForFormat($format)->toArray()
                 ]
             );
