@@ -50,17 +50,17 @@ class ParsedStreetAddress implements ParsedStreetAddressInterface
         $this->streetNumberAddition = $streetNumberAddition;
     }
 
-    public function getStreet()
+    public function getStreet(): ?string
     {
         return $this->street;
     }
 
-    public function getStreetNumber()
+    public function getStreetNumber(): ?string
     {
         return $this->streetNumber;
     }
 
-    public function getDistrict()
+    public function getDistrict(): ?string
     {
         return $this->district;
     }
@@ -70,7 +70,7 @@ class ParsedStreetAddress implements ParsedStreetAddressInterface
      *
      * @return string|null
      */
-    public function getStreetNumberWithoutAddition()
+    public function getStreetNumberWithoutAddition(): ?string
     {
         return $this->streetNumberWithoutAddition;
     }
@@ -80,7 +80,7 @@ class ParsedStreetAddress implements ParsedStreetAddressInterface
      *
      * @return string|null
      */
-    public function getStreetNumberAddition()
+    public function getStreetNumberAddition(): ?string
     {
         return $this->streetNumberAddition;
     }

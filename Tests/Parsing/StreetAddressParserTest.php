@@ -13,7 +13,7 @@ class StreetAddressParserTest extends TestCase
      */
     private $parser;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parser = new StreetAddressParser();
     }
@@ -21,8 +21,14 @@ class StreetAddressParserTest extends TestCase
     /**
      * @dataProvider cases
      */
-    public function testParseLines($lines, $street, $streetNumber, $district, $streetNumberWithoutAddition, $streetNumberAddition)
-    {
+    public function testParseLines(
+        array $lines,
+        ?string $street,
+        ?string $streetNumber,
+        ?string $district,
+        ?string $streetNumberWithoutAddition,
+        ?string $streetNumberAddition
+    ): void {
         $parsed = $this->parser->parseLines($lines);
         $this->assertInstanceOf(ParsedStreetAddressInterface::class, $parsed);
         $this->assertEquals($street, $parsed->getStreet());
@@ -32,7 +38,7 @@ class StreetAddressParserTest extends TestCase
         $this->assertEquals($streetNumberAddition, $parsed->getStreetNumberAddition());
     }
 
-    public function cases()
+    public function cases(): array
     {
         return [
             [[], null, null, null, null, null],

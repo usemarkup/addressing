@@ -140,7 +140,7 @@ class SerializableAddressAdapter implements RenderableAddressInterface, \JsonSer
         return ($this->address instanceof RenderableAddressInterface) ? $this->address->hasPrerenderedLines() : false;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'recipient' => $this->getRecipient() ?: '',

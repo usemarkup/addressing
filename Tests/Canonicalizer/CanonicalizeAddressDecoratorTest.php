@@ -20,13 +20,13 @@ class CanonicalizeAddressDecoratorTest extends MockeryTestCase
      */
     private $decorator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->address = m::mock(AddressInterface::class);
         $this->decorator = new CanonicalizeAddressDecorator($this->address);
     }
 
-    public function testIsAddress()
+    public function testIsAddress(): void
     {
         $this->assertInstanceOf(AddressInterface::class, $this->decorator);
     }
@@ -34,7 +34,7 @@ class CanonicalizeAddressDecoratorTest extends MockeryTestCase
     /**
      * @dataProvider codesForCountries
      */
-    public function testCanonicalizesPostalCode($original, $expected, $country)
+    public function testCanonicalizesPostalCode(string $original, string $expected, string $country): void
     {
         $this->address
             ->shouldReceive('getPostalCode')
@@ -45,7 +45,7 @@ class CanonicalizeAddressDecoratorTest extends MockeryTestCase
         $this->assertEquals($expected, $this->decorator->getPostalCode());
     }
 
-    public function codesForCountries()
+    public function codesForCountries(): array
     {
         return [
             [' WD36TH', 'WD3 6TH', 'GB'],

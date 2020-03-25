@@ -7,8 +7,14 @@ namespace Markup\Addressing;
  */
 class Geography
 {
+    /**
+     * @var array
+     */
     private static $euCountries = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'];
 
+    /**
+     * @var array
+     */
     private static $usStates = [
         'AL' => "Alabama",
         'AK' => "Alaska",
@@ -63,6 +69,9 @@ class Geography
         'WY' => "Wyoming",
     ];
 
+    /**
+     * @var array
+     */
     private static $canadaProvincesEn = [
         "BC" => "British Columbia",
         "ON" => "Ontario",
@@ -79,6 +88,9 @@ class Geography
         "YT" => "Yukon Territory",
     ];
 
+    /**
+     * @var array
+     */
     private static $canadaProvincesFr = [
         "AB" => "Alberta",
         "BC" => "Colombie-Britannique",

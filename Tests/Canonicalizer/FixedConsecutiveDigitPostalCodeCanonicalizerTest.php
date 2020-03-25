@@ -18,13 +18,13 @@ class FixedConsecutiveDigitPostalCodeCanonicalizerTest extends TestCase
      */
     private $canonicalizer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->digits = 5;
         $this->canonicalizer = new FixedConsecutiveDigitPostalCodeCanonicalizer($this->digits);
     }
 
-    public function testIsCanonicalizer()
+    public function testIsCanonicalizer(): void
     {
         $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer);
     }
@@ -32,12 +32,12 @@ class FixedConsecutiveDigitPostalCodeCanonicalizerTest extends TestCase
     /**
      * @dataProvider fiveDigitCodes
      */
-    public function testCanonicalize($input, $expected)
+    public function testCanonicalize(string $input, string $expected): void
     {
         $this->assertEquals($expected, $this->canonicalizer->canonicalize($input));
     }
 
-    public function fiveDigitCodes()
+    public function fiveDigitCodes(): array
     {
         return [
             ['AQ-244 66', '24466'],

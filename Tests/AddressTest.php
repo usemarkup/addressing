@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class AddressTest extends TestCase
 {
-    public function testAddress()
+    public function testAddress(): void
     {
         $country = 'GB';
         $streetLines = [

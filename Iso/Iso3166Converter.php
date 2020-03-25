@@ -7,6 +7,9 @@ namespace Markup\Addressing\Iso;
  */
 class Iso3166Converter
 {
+    /**
+     * @var array
+     */
     private static $codes = [
         'AD' => 'AND',//Andorra
         'AE' => 'ARE',//United Arab Emirates

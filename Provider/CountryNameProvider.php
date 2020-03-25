@@ -33,7 +33,7 @@ class CountryNameProvider implements CountryNameProviderInterface
     /**
      * {@inheritdoc}
      **/
-    public function getDisplayCountries($locale = null)
+    public function getDisplayCountries(?string $locale = null): array
     {
         $localeToUse = $locale ?: $this->getLocale();
         if (!$this->hasLoadedCountriesForLocale($localeToUse)) {
@@ -46,7 +46,7 @@ class CountryNameProvider implements CountryNameProviderInterface
     /**
      * {@inheritdoc}
      **/
-    public function getDisplayNameForCountry($country, $locale = null)
+    public function getDisplayNameForCountry(string $country, ?string $locale = null): string
     {
         $localeToUse = $locale ?: $this->getLocale();
         if (!$this->hasLoadedCountriesForLocale($localeToUse)) {
@@ -61,29 +61,21 @@ class CountryNameProvider implements CountryNameProviderInterface
 
     /**
      * Gets whether the countries have been loaded into this object for a locale.
-     *
-     * @param string $locale
-     * @return bool
      **/
-    private function hasLoadedCountriesForLocale($locale)
+    private function hasLoadedCountriesForLocale(string $locale): bool
     {
         return !empty($this->displayCountries[$locale]);
     }
 
     /**
      * Loads countries in.
-     *
-     * @param string $locale
      **/
-    private function loadCountriesForLocale($locale)
+    private function loadCountriesForLocale(string $locale): void
     {
         $this->displayCountries[$locale] = $this->getCountryNamesForLocale($locale);
     }
 
-    /**
-     * @var string
-     */
-    private function getLocale()
+    private function getLocale(): string
     {
         return call_user_func($this->localeProvider);
     }

@@ -18,13 +18,13 @@ class IntlAddressHandlebarsTemplateProviderTest extends TestCase
      */
     private $provider;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->knownCountries = ['gb', 'fr', 'de', 'us'];
         $this->provider = new IntlAddressHandlebarsTemplateProvider($this->knownCountries);
     }
 
-    public function testIsTemplateProvider()
+    public function testIsTemplateProvider(): void
     {
         $this->assertInstanceOf(IntlAddressTemplateProviderInterface::class, $this->provider);
     }

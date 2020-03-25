@@ -9,10 +9,8 @@ interface CountryNameProviderInterface
 {
     /**
      * Gets all known display country names, keyed by the ISO3166 alpha-2 representation for that country.
-     *
-     * @return array
      **/
-    public function getDisplayCountries();
+    public function getDisplayCountries(): array;
 
     /**
      * Gets the display name for the provided country (ISO3166 alpha-2), localized.  Returns null if display name not known.
@@ -21,5 +19,5 @@ interface CountryNameProviderInterface
      * @param  string $locale  The locale to use for rendering the country name. (Will use a fallback/ system default if not set.)
      * @return string
      **/
-    public function getDisplayNameForCountry($country, $locale = null);
+    public function getDisplayNameForCountry(string $country, ?string $locale = null): string;
 }

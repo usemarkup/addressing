@@ -53,7 +53,6 @@ class PostalCodeCanonicalizer
                 $fourDigitCanonicalizer = new FixedConsecutiveDigitPostalCodeCanonicalizer(4);
 
                 return $fourDigitCanonicalizer->canonicalize($postalCode);
-                break;
 
             case 'CA':
                 $caCanonicalizer = new CanadaPostalCodeCanonicalizer();

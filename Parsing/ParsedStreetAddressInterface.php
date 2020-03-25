@@ -7,23 +7,19 @@ namespace Markup\Addressing\Parsing;
  */
 interface ParsedStreetAddressInterface
 {
-    public function getStreetNumber();
+    public function getStreetNumber(): ?string;
 
-    public function getStreet();
+    public function getStreet(): ?string;
 
-    public function getDistrict();
+    public function getDistrict(): ?string;
 
     /**
      * Gets the street number without any non-numeric addition - i.e. for 23A will return '23'.
-     *
-     * @return string
      */
-    public function getStreetNumberWithoutAddition();
+    public function getStreetNumberWithoutAddition(): ?string;
 
     /**
      * Gets any non-numeric additional part of a street number - i.e. for 23A will return 'A'.
-     *
-     * @return string
      */
-    public function getStreetNumberAddition();
+    public function getStreetNumberAddition(): ?string;
 }

@@ -12,7 +12,7 @@ class Iso3166ConverterTest extends TestCase
      */
     private $converter;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->converter = new Iso3166Converter();
     }
@@ -20,7 +20,7 @@ class Iso3166ConverterTest extends TestCase
     /**
      * @dataProvider codes
      */
-    public function testConvertAlpha2ToAlpha3($alpha2, $alpha3)
+    public function testConvertAlpha2ToAlpha3(string $alpha2, string $alpha3): void
     {
         $this->assertEquals($alpha3, $this->converter->convertAlpha2ToAlpha3($alpha2));
     }
@@ -28,12 +28,12 @@ class Iso3166ConverterTest extends TestCase
     /**
      * @dataProvider codes
      */
-    public function testConvertAlpha3ToAlpha2($alpha2, $alpha3)
+    public function testConvertAlpha3ToAlpha2(string $alpha2, string $alpha3): void
     {
         $this->assertEquals($alpha2, $this->converter->convertAlpha3ToAlpha2($alpha3));
     }
 
-    public function codes()
+    public function codes(): array
     {
         return [
             ['GB', 'GBR'],

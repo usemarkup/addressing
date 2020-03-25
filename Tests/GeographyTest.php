@@ -12,7 +12,7 @@ class GeographyTest extends TestCase
      */
     private $geography;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->geography = new Geography();
     }
@@ -20,12 +20,12 @@ class GeographyTest extends TestCase
     /**
      * @dataProvider euCountryCases
      */
-    public function testInEu($country, $expected)
+    public function testInEu(string $country, bool $expected): void
     {
         $this->assertEquals($expected, $this->geography->checkInEu($country));
     }
 
-    public function euCountryCases()
+    public function euCountryCases(): array
     {
         return [
             ['FR', true],
@@ -36,12 +36,12 @@ class GeographyTest extends TestCase
     /**
      * @dataProvider usRegionAbbreviations
      */
-    public function testRegionAbbreviationForUs($region, $expected)
+    public function testRegionAbbreviationForUs(string $region, bool $expected): void
     {
         $this->assertEquals($expected, $this->geography->isUsStateAbbreviation($region));
     }
 
-    public function usRegionAbbreviations()
+    public function usRegionAbbreviations(): array
     {
         return [
             ['NY', true],
