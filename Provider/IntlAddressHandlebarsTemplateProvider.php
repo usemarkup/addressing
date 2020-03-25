@@ -55,7 +55,7 @@ class IntlAddressHandlebarsTemplateProvider implements IntlAddressTemplateProvid
         return new HandlebarsTemplate($this->getRenderFunction(strtolower($country), $format));
     }
 
-    private function getRenderFunction($country, $format)
+    private function getRenderFunction(string $country, string $format): callable
     {
         $label = (in_array($country, $this->knownCountries)) ? $country : 'fallback';
         $filename = sprintf('address_%s_%s_compiled.php', $label, $format);
@@ -106,11 +106,7 @@ class IntlAddressHandlebarsTemplateProvider implements IntlAddressTemplateProvid
         return file_get_contents($handlebarsFilePath) ?: '';
     }
 
-    /**
-     * @param string $format
-     * @return HelperSetInterface
-     */
-    private function getHelperSetForFormat($format)
+    private function getHelperSetForFormat(string $format): HelperSetInterface
     {
         switch ($format) {
             case 'comma_separated':
@@ -126,7 +122,7 @@ class IntlAddressHandlebarsTemplateProvider implements IntlAddressTemplateProvid
         return $helperSet;
     }
 
-    private static function cacheRenderFunction($label, $format, callable $renderFunction)
+    private static function cacheRenderFunction(string $label, string $format, callable $renderFunction): void
     {
         $key = self::getCacheKey($label, $format);
         self::$cachedRenderFunctions[$key] = $renderFunction;
@@ -147,7 +143,7 @@ class IntlAddressHandlebarsTemplateProvider implements IntlAddressTemplateProvid
         return self::$cachedRenderFunctions[$key];
     }
 
-    private static function getCacheKey($label, $format)
+    private static function getCacheKey(string $label, string $format): string
     {
         return implode('', [$label, $format]);
     }

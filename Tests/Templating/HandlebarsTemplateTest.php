@@ -23,7 +23,7 @@ class HandlebarsTemplateTest extends TestCase
      */
     private $template;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->context = [
             'this' => 'that',
@@ -37,12 +37,12 @@ class HandlebarsTemplateTest extends TestCase
         $this->template = new HandlebarsTemplate($this->renderFunction);
     }
 
-    public function testIsTemplate()
+    public function testIsTemplate(): void
     {
         $this->assertInstanceOf(TemplateInterface::class, $this->template);
     }
 
-    public function testRender()
+    public function testRender(): void
     {
         $this->expectException(CustomTemplateException::class);
         $this->template->render($this->context);

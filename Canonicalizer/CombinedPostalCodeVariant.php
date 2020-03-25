@@ -24,7 +24,7 @@ class CombinedPostalCodeVariant implements PostalCodeVariantInterface
      * @param string $code
      * @return string
      */
-    public function format($code)
+    public function format(string $code): string
     {
         foreach ($this->variants as $variant) {
             $newCode = $variant->format($code);

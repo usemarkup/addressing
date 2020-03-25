@@ -33,7 +33,7 @@ class SerializableAddressAdapterTest extends MockeryTestCase
      */
     private $adapter;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->address = m::mock(AddressInterface::class);
         $this->locale = 'fr';
@@ -43,17 +43,17 @@ class SerializableAddressAdapterTest extends MockeryTestCase
         $this->adapter = new SerializableAddressAdapter($this->address, $this->countryNameRenderer);
     }
 
-    public function testIsRenderableAddress()
+    public function testIsRenderableAddress(): void
     {
         $this->assertInstanceOf(RenderableAddressInterface::class, $this->adapter);
     }
 
-    public function testIsJsonSerializable()
+    public function testIsJsonSerializable(): void
     {
         $this->assertInstanceOf(\JsonSerializable::class, $this->adapter);
     }
 
-    public function testStandardGetters()
+    public function testStandardGetters(): void
     {
         $recipient = 'Anders Andersson';
         $this->mockAddressMethod('getRecipient', $recipient);
@@ -76,13 +76,13 @@ class SerializableAddressAdapterTest extends MockeryTestCase
         $this->assertEquals($code, $this->adapter->getCountry());
     }
 
-    public function testRenderableMethodsWithNonRenderableAddress()
+    public function testRenderableMethodsWithNonRenderableAddress(): void
     {
         $this->assertNull($this->adapter->getPrerenderedLines());
         $this->assertFalse($this->adapter->hasPrerenderedLines());
     }
 
-    public function testRenderableMethodsWithRenderableAddress()
+    public function testRenderableMethodsWithRenderableAddress(): void
     {
         $renderable = m::mock(RenderableAddressInterface::class);
         $adapter = new SerializableAddressAdapter($renderable, $this->countryNameRenderer);
@@ -93,7 +93,7 @@ class SerializableAddressAdapterTest extends MockeryTestCase
         $this->assertTrue($adapter->hasPrerenderedLines());
     }
 
-    public function testSerialized()
+    public function testSerialized(): void
     {
         $recipient = 'Joe Smith';
         $streetAddressLines = ['45 Götgatan', 'Södermalm'];
@@ -121,7 +121,12 @@ class SerializableAddressAdapterTest extends MockeryTestCase
         $this->assertEquals($expected, $adapter->jsonSerialize());
     }
 
-    private function mockAddressMethod($method, $return, m\MockInterface $mock = null)
+    /**
+     * @param string $method
+     * @param mixed $return
+     * @param m\MockInterface $mock
+     */
+    private function mockAddressMethod(string $method, $return, ?m\MockInterface $mock = null): void
     {
         $mock = $mock ?: $this->address;
         $mock

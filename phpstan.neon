@@ -6,3 +6,5 @@ parameters:
         - %currentWorkingDirectory%/vendor/*
     ignoreErrors:
         - '#getRegionBundle#'
+    checkMissingIterableValueType: false
+    reportUnmatchedIgnoredErrors: false

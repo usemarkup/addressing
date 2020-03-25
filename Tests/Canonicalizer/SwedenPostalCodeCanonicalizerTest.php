@@ -16,12 +16,12 @@ class SwedenPostalCodeCanonicalizerTest extends TestCase
      */
     private $canonicalizer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->canonicalizer = new SwedenPostalCodeCanonicalizer();
     }
 
-    public function testIsCanonicalizer()
+    public function testIsCanonicalizer(): void
     {
         $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer  );
     }
@@ -29,12 +29,12 @@ class SwedenPostalCodeCanonicalizerTest extends TestCase
     /**
      * @dataProvider postalCodes
      **/
-    public function testCanonicalize($input, $output)
+    public function testCanonicalize(string $input, string $output): void
     {
         $this->assertEquals($output, $this->canonicalizer->canonicalize($input));
     }
 
-    public function postalCodes()
+    public function postalCodes(): array
     {
         return [
             ['SE-12345', '123 45'],

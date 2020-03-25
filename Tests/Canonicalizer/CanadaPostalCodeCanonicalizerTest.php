@@ -13,12 +13,12 @@ class CanadaPostalCodeCanonicalizerTest extends TestCase
      */
     private $canonicalizer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->canonicalizer = new CanadaPostalCodeCanonicalizer();
     }
 
-    public function testIsCanonicalizer()
+    public function testIsCanonicalizer(): void
     {
         $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer);
     }
@@ -26,12 +26,12 @@ class CanadaPostalCodeCanonicalizerTest extends TestCase
     /**
      * @dataProvider postalCodes
      **/
-    public function testCanonicalize($input, $output)
+    public function testCanonicalize(string $input, string $output): void
     {
         $this->assertEquals($output, $this->canonicalizer->canonicalize($input));
     }
 
-    public function postalCodes()
+    public function postalCodes(): array
     {
         return [
             ['l3f6y7', 'L3F 6Y7'],

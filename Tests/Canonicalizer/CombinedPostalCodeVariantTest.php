@@ -9,12 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class CombinedPostalCodeVariantTest extends TestCase
 {
-    public function testIsPostalCodeVariant()
+    public function testIsPostalCodeVariant(): void
     {
         $this->assertInstanceOf(PostalCodeVariantInterface::class, new CombinedPostalCodeVariant([]));
     }
 
-    public function testVariant()
+    public function testVariant(): void
     {
         $variant = new CombinedPostalCodeVariant([new PostalCodeVariant([5]), new PostalCodeVariant([5, 4], '-')]);
         $code = '123456789';

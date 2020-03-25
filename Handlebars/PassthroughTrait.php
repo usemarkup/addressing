@@ -4,7 +4,7 @@ namespace Markup\Addressing\Handlebars;
 
 trait PassthroughTrait
 {
-    public function getPassthroughFunction()
+    public function getPassthroughFunction(): \Closure
     {
         return function ($options) {
             if (isset($options['fn']) && is_callable($options['fn'])) {

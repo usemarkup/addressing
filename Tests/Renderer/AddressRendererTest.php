@@ -7,6 +7,7 @@ use Markup\Addressing\Provider\CountryNameProvider;
 use Markup\Addressing\Provider\CountryNameProviderInterface;
 use Markup\Addressing\Provider\IntlAddressHandlebarsTemplateProvider;
 use Markup\Addressing\Provider\IntlAddressTemplateProviderInterface;
+use Markup\Addressing\RenderableAddressInterface;
 use Markup\Addressing\Renderer\AddressRenderer;
 use Markup\Addressing\Renderer\AddressRendererInterface;
 use org\bovigo\vfs\vfsStream;
@@ -38,7 +39,7 @@ class AddressRendererTest extends TestCase
      */
     private $renderer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $locale = 'en_GB';
         $this->cacheDir = vfsStream::setup();
@@ -56,12 +57,12 @@ class AddressRendererTest extends TestCase
         );
     }
 
-    public function testIsAddressRenderer()
+    public function testIsAddressRenderer(): void
     {
         $this->assertInstanceOf(AddressRendererInterface::class, $this->renderer);
     }
 
-    public function testRenderPlaintext()
+    public function testRenderPlaintext(): void
     {
         $expected = "Test Recipient
 23 Main Street
@@ -73,28 +74,28 @@ United Kingdom";
         $this->assertEquals($expected, $rendered);
     }
 
-    public function testRenderHtml()
+    public function testRenderHtml(): void
     {
         $expected = '<p class="adr" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="name" itemscope itemtype="http://schema.org/Person" class="recipient">Test Recipient</span><br><span class="street-address" itemprop="streetAddress">23 Main Street<br></span><span class="locality" itemprop="addressLocality">Anytown</span><br><span class="region" itemprop="addressRegion">Anyshire</span><br><span class="postal-code" itemprop="postalCode">AB1 2CD</span><br><span class="country-name" itemprop="addressCountry" itemscope itemtype="http://schema.org/Country">United Kingdom</span></p>';
         $rendered = $this->renderer->render($this->getGbAddress(), ['format' => 'html']);
         $this->assertEquals($expected, $rendered);
     }
 
-    public function testRenderCommaSeparated()
+    public function testRenderCommaSeparated(): void
     {
         $expected = 'Test Recipient, 23 Main Street, Anytown, Anyshire, AB1 2CD, United Kingdom';
         $rendered = $this->renderer->render($this->getGbAddress(), ['format' => 'comma_separated']);
         $this->assertEquals($expected, $rendered);
     }
 
-    public function testRenderSwedishAddress()
+    public function testRenderSwedishAddress(): void
     {
         $expected = 'Lars Larsson, Storgatan 23, Lillastad, 775 77  MALMÖ, Sweden';
         $rendered = $this->renderer->render($this->getSeAddress(), ['format' => 'comma_separated']);
         $this->assertEquals($expected, $rendered);
     }
 
-    public function testRenderFrenchAddress()
+    public function testRenderFrenchAddress(): void
     {
         $expected = 'M Dommage, Rue de la Rue 24, 75006  PARIS, Frankreich';
         $locale = 'de_DE';
@@ -107,32 +108,29 @@ United Kingdom";
         $this->assertEquals($expected, $rendered);
     }
 
-    public function testRenderIrishAddress()
+    public function testRenderIrishAddress(): void
     {
         $expected = 'James Smith, Pub Cottage, Donegal, Co Donegal, Ireland';
         $rendered = $this->renderer->render($this->getIeAddress(), ['format' => 'comma_separated']);
         $this->assertEquals($expected, $rendered);
     }
 
-    /**
-     * @var AddressInterface
-     */
-    private function getGbAddress()
+    private function getGbAddress(): RenderableAddressInterface
     {
         return new TestGbAddress();
     }
 
-    private function getSeAddress()
+    private function getSeAddress(): RenderableAddressInterface
     {
         return new TestSeAddress();
     }
 
-    private function getFrAddress()
+    private function getFrAddress(): RenderableAddressInterface
     {
         return new TestFrAddress();
     }
 
-    private function getIeAddress()
+    private function getIeAddress(): RenderableAddressInterface
     {
         return new TestIeAddress();
     }

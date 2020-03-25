@@ -13,12 +13,12 @@ class NetherlandsPostalCodeCanonicalizerTest extends TestCase
      */
     private $canonicalizer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->canonicalizer = new NetherlandsPostalCodeCanonicalizer();
     }
 
-    public function testIsCanonicalizer()
+    public function testIsCanonicalizer(): void
     {
         $this->assertInstanceOf(CanonicalizerInterface::class, $this->canonicalizer);
     }
@@ -26,12 +26,12 @@ class NetherlandsPostalCodeCanonicalizerTest extends TestCase
     /**
      * @dataProvider postcodes
      */
-    public function testCanonicalize($dirty, $filtered)
+    public function testCanonicalize(string $dirty, string $filtered): void
     {
         $this->assertEquals($filtered, $this->canonicalizer->canonicalize($dirty));
     }
 
-    public function postcodes()
+    public function postcodes(): array
     {
         return [
             ['1012VF', '1012 VF'],

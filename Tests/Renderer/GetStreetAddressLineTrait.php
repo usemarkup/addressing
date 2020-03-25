@@ -10,7 +10,7 @@ trait GetStreetAddressLineTrait
      * @param  int $lineNumber
      * @return string|null
      **/
-    public function getStreetAddressLine($lineNumber)
+    public function getStreetAddressLine($lineNumber): ?string
     {
         $streetLines = $this->getStreetAddressLines();
         if (!isset($streetLines[$lineNumber-1])) {

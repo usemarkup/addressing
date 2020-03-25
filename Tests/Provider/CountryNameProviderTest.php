@@ -25,7 +25,7 @@ class CountryNameProviderTest extends TestCase
      */
     private $provider;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->renderingLocale = 'en_GB';
         $this->localeProvider = function () {
@@ -34,7 +34,7 @@ class CountryNameProviderTest extends TestCase
         $this->provider = new CountryNameProvider($this->localeProvider);
     }
 
-    public function testIsCountryNameProvider()
+    public function testIsCountryNameProvider(): void
     {
         $this->assertTrue($this->provider instanceof \Markup\Addressing\Provider\CountryNameProviderInterface);
     }
