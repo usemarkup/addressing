@@ -59,6 +59,11 @@ class PostalCodeCanonicalizer
 
                 return $caCanonicalizer->canonicalize($postalCode);
 
+             case 'IE':
+                 $ieCanonicalizer = new IrelandPostcodeCanonicalizer();
+
+                 return $ieCanonicalizer->canonicalize($postalCode);
+
             default:
                 return $postalCode;
         }
