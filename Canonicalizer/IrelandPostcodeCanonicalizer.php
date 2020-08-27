@@ -14,7 +14,7 @@ class IrelandPostcodeCanonicalizer implements CanonicalizerInterface
         $acceptableRegex = '/^([AC-FHKNPRTV-Y]\d{2}|D6W) [0-9AC-FHKNPRTV-Y]{4}/';
 
         //first, return unmodified any input less than 5 characters long, or anything not a string
-        if (!is_string($input) or strlen($input) < 5) {
+        if (!is_string($input) || strlen($input) < 5) {
             return $input;
         }
 
