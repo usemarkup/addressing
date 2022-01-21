@@ -1,4 +1,5 @@
-# MarkupAddressing
+
+# This repository and organisation are scheduled for deletion - please fork any repositories you are using to another location prior to February 28th 2022.
 
 [![Build Status](https://api.travis-ci.org/usemarkup/addressing.png?branch=master)](http://travis-ci.org/usemarkup/addressing)
 
